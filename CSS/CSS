@@ -1,0 +1,538 @@
+CSS Selectors & Styling
+
+Question 1: What is a CSS selector? Provide examples of element, class, and ID selectors.
+->A CSS selector is used to choose which HTML elements you want to style.
+->Types of CSS Selectors
+
+1. Element Selector
+-Selects all elements of a given type.
+-Styles all <p> tags.
+-Example:
+p {
+  color: blue;
+}
+
+2. Class Selector
+-Selects elements with a specific class.
+-Styles any element with class="box".
+-Example:
+.box {
+  border: 1px solid black;
+}
+
+3. ID Selector
+-Selects one element with a specific ID.
+-Styles the element with id="header".
+-Example
+#header {
+  background-color: gray;
+}
+
+Question 2: Explain the concept of CSS specificity. How do conflicts between multiple styles
+get resolved?
+->CSS specificity is the rule the browser uses to decide which CSS style gets applied when multiple rules target the same element.
+
+| Selector Type      | Example              | Specificity Value |
+| ------------------ | -------------------- | ----------------- |
+| Universal selector | `*`                  | 0                 |
+| Element selector   | `p`, `div`           | 1                 |
+| Class selector     | `.box`               | 10                |
+| Attribute selector | `input[type="text"]` | 10                |
+| Pseudo-class       | `:hover`             | 10                |
+| ID selector        | `#header`            | 100               |
+| Inline style       | `style=""`           | 1000              |
+
+1.Highest Specificity Wins
+->If a <p id="title" class="text"> exists → red wins
+->Example:
+p { color: blue; }        /* specificity 1 */
+.text { color: green; }   /* specificity 10 */
+#title { color: red; }    /* specificity 100 */
+
+2.If Specificity Is Equal → Last Rule Wins
+->Green wins because it appears later in the CSS.
+->Example:
+.text { color: blue; }
+.text { color: green; }
+
+3.Inline Styles Override Most Rules
+->Purple wins (inline style beats class, ID, etc.)
+->Example:
+<p style="color: purple;" class="text">Hello</p>
+
+4.!important Overrides Everything
+->Blue wins, even though ID has higher specificity.
+->If two rules both use !important, then specificity is compared again.
+->Example:
+p { color: blue !important; }
+#title { color: red; }
+
+->Inline > ID > Class/Attribute/Pseudo-class > Element
+->1000 > 100 > 10 > 1
+
+Question 3: What is the difference between internal, external, and inline CSS? Discuss the
+advantages and disadvantages of each approach.
+1.Inline CSS
+->CSS is written inside an HTML tag using the style attribute.
+Advantage: Quick for small changes.
+Disadvantage: Not reusable and hard to manage.
+Example:
+<p style="color: red; font-size: 18px;">Hello World</p>
+
+2.Internal CSS
+->CSS is written inside the <style> tag in the HTML file.
+Advantage: Styles the whole page.
+Disadvantage: Cannot be used on multiple pages.
+Example:
+<head>
+  <style>
+    p {
+      color: blue;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+
+3.External CSS
+->CSS is written in a separate .css file and linked to HTML.
+Advantage: Reusable and easy to maintain.
+Disadvantage: Needs an extra file and link.
+Example:
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+->styles.css
+p {
+  color: green;
+  font-size: 18px;
+}
+
+
+5. CSS Box Model
+
+Question 1: Explain the CSS box model and its components (content, padding, border,
+margin). How does each affect the size of an element?
+
+->In CSS, every HTML element is treated like a rectangular box. The box model describes how the size of that box is calculated and how space is added around content.
+->It has four main parts (from inside to outside):
+    Content → Padding → Border → Margin
+
+1. Content
+->This is the actual text, image, or other data inside the element.
+->Controlled by: width and height
+->This sets the size of only the content area (by default).
+->Example:
+div {
+  width: 200px;
+  height: 100px;
+}
+
+2. Padding
+->Padding is the space between the content and the border.
+->Makes the box bigger inside the border
+->Background color extends into padding
+->If width = 200px and padding = 20px on both sides:
+->Total width so far = 200 + 20 + 20 = 240px
+->Example:
+div {
+  padding: 20px;
+}
+
+3. Border
+->Border wraps around padding and content.
+->If border = 5px on both sides:
+->Total width now = 240 + 5 + 5 = 250px
+->Example:
+div {
+  border: 5px solid black;
+}
+
+4. Margin
+->Margin is the space outside the border, separating the element from other elements.
+->Margin does NOT affect the element’s internal size, but it adds space around it.
+->Example:
+div {
+  margin: 15px;
+}
+
+*Important: box-sizing
+->By default:
+box-sizing: content-box; /* padding & border added outside width */
+->But if you use:
+box-sizing: border-box;
+
+->Then padding and border are included inside the given width and height, making layout easier.
+
+div {
+  width: 200px;
+  padding: 20px;
+  border: 5px solid black;
+  box-sizing: border-box;
+}
+
+Question 2: What is the difference between border-box and content-box box-sizing in
+CSS?Which is the default?
+
+1.box-sizing: content-box (Default)
+->This is the default box model in CSS.
+->The width and height you set apply only to the content area
+->padding and border are added outside that size
+->Total width = 200 + 20 + 20 + 5 + 5 = 250px
+->So the element becomes bigger than the width you set.
+Formula:
+Actual element width = width + padding + border
+Example:
+div {
+  width: 200px;
+  padding: 20px;
+  border: 5px solid black;
+  box-sizing: content-box; /* default */
+}
+
+2.box-sizing: border-box
+->Here, the width and height include content + padding + border
+Formula:
+Content width = width - padding - border
+->Total width = exactly 200px
+->The content area shrinks to make space for padding and border.
+Example:
+div {
+  width: 200px;
+  padding: 20px;
+  border: 5px solid black;
+  box-sizing: border-box;
+}
+
+6. CSS Flexbox
+
+Question 1: What is CSS Flexbox, and how is it useful for layout design? Explain the terms
+flex-container and flex-item
+
+->CSS Flexbox (Flexible Box Layout) is a layout system in CSS that helps you arrange elements in a row or column and control how they align, space, and resize inside a container.
+->It’s super useful because it makes layouts responsive and easy to manage, especially when you want items to automatically adjust their size or position based on screen size.
+
+1.Flex Container
+->A flex-container is the parent element where Flexbox is applied.
+->You activate Flexbox by adding:
+->Once this is set, all direct child elements become flex items.
+Example:
+.container {
+  display: flex;
+}
+->Here, .container is the flex-container.
+
+2.Flex Item
+->A flex-item is any direct child of a flex-container.
+->Flex items can:
+    Grow or shrink
+    Align differently
+    Be reordered
+    Take up available space dynamically
+Example:
+<div class="container">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+</div>
+->Each .box is a flex-item because it’s inside a flex-container.
+
+*Why Flexbox is Useful
+->Easy horizontal & vertical alignment
+->Space distribution between items
+->Responsive without complex positioning
+->Works great for navigation bars, cards, forms, and page sections
+->In short: Flexbox makes layout design flexible, clean, and responsive
+
+Question 2: Describe the properties justify-content, align-items, and flex-direction used
+inFlexbox.
+
+1. flex-direction
+->Decides which direction flex items are placed inside the container.
+    row (default) – Items go left to right
+    row-reverse – Items go right to left
+    column – Items go top to bottom
+    column-reverse – Items go bottom to top
+    It controls the main axis direction.
+
+2. justify-content
+->Aligns items along the main axis (the direction set by flex-direction).
+->Common values:
+    flex-start – Items at the start
+    flex-end – Items at the end
+    center – Items in the center
+    space-between – Equal space between items
+    space-around – Space around items
+    space-evenly – Equal space everywhere
+->Think of it as horizontal alignment when direction is row, and vertical alignment when direction is column.
+
+3. align-items
+->Aligns items along the cross axis (perpendicular to main axis).
+->Common values:
+    flex-start – Align to top (or left in column)
+    flex-end – Align to bottom (or right in column)
+    center – Align to center
+    stretch (default) – Items stretch to fill container
+    baseline – Align text baselines
+->Think of it as vertical alignment when direction is row, and horizontal alignment when direction is column.
+
+7. CSS Grid
+
+Question 1: Explain CSS Grid and how it differs from Flexbox. When would you use Grid over
+Flexbox
+->CSS Grid is a layout system that works in two directions — rows and columns at the same time. It is used to design the overall structure of a webpage.
+->Flexbox is a layout system that works in one direction only — either a row or a column. It is mainly used to align and space items inside a container.
+
+->Difference Between Grid and Flexbox
+
+| CSS Grid                          | Flexbox                         |
+| --------------------------------- | ------------------------------- |
+| Two-dimensional (rows + columns)  | One-dimensional (row OR column) |
+| Best for full page layouts        | Best for small components       |
+| More control over exact placement | Items flow in one direction     |
+
+->Use CSS Grid when you need to design a complete page layout with rows and columns, like:
+    Website layouts
+    Image galleries
+    Dashboards
+->Use Flexbox for smaller layouts like menus, buttons, or aligning items in a row.
+->In short:
+    Grid = Big layout
+    Flexbox = Small alignment
+
+Question 2: Describe the grid-template-columns, grid-template-rows, and grid-gap
+properties. Provide examples of how to use them.
+
+1.grid-template-columns
+->This property defines how many columns your grid has and how wide each column should be.
+
+Example 1: Fixed column sizes
+.container {
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+}
+
+Example 2: Using fractions (fr)
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+->The space is divided into 4 equal parts
+->First column = 1 part
+->Second column = 2 parts
+->Third column = 1 part
+->Great for responsive layouts.
+
+Example 3: Auto-fit with minimum size
+->Creates as many columns as fit, each at least 150px, and stretches them evenly.
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+3.grid-template-rows
+->This works just like columns, but controls the height of rows.
+Example
+.container {
+  display: grid;
+  grid-template-rows: 100px 200px auto;
+}
+->Creates 3 rows:
+    Row 1 = 100px
+    Row 2 = 200px
+    Row 3 = takes remaining space automatically
+
+Using fr for rows
+
+.container {
+  height: 500px;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+}
+->The total height (500px) is split into 3 parts
+    First row = 1 part
+    Second row = 2 parts
+
+3.grid-gap (now called gap)
+->This property adds space between rows and columns.
+Example: Same gap for rows & columns
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+->Adds 20px space between all rows and columns
+
+->Different gap for rows and columns
+    Row gap = 10px
+    Column gap = 30px
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px 30px; /* row-gap column-gap */
+}
+
+8. Responsive Web Design with Media Queries
+
+Question 1: What are media queries in CSS, and why are they important for responsive
+design?
+->Media queries in CSS are a way to apply different styles based on a device’s characteristics — like screen width, height, resolution, or orientation.
+->They are a core part of responsive web design, which means making websites look good on mobiles, tablets, laptops, and large screens.
+
+*What Are Media Queries?
+->A media query uses the @media rule to check conditions about the device, then applies CSS only if those conditions are true.
+->This means: If the screen width is 600px or less (like a phone), change the background color.
+Syntax:
+@media (condition) {
+  /* CSS rules here */
+}
+
+Example:
+
+@media (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+}
+
+*Why Are Media Queries Important for Responsive Design?
+->Because users browse websites on different screen sizes, one fixed layout won’t work everywhere. Media queries let us adapt.
+
+1. Adjust Layout for Different Screens
+->On larger screens, elements can sit side-by-side. On small screens, they stack.
+
+Example:
+@media (min-width: 768px) {
+  .container {
+    display: flex;
+  }
+}
+
+2. Improve Readability
+->Smaller text might fit better on small devices.
+
+Example:
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+3. Optimize Navigation
+->Full menu for desktop, hamburger menu for mobile.
+
+Example:
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+}
+
+4. Handle Device Orientation
+Example:
+@media (orientation: landscape) {
+  body {
+    background-color: lightgreen;
+  }
+}
+
+
+| Feature                  | What It Checks         |
+| ------------------------ | ---------------------- |
+| `width`, `height`        | Screen size            |
+| `min-width`, `max-width` | Responsive breakpoints |
+| `orientation`            | Portrait or landscape  |
+| `resolution`             | Screen pixel density   |
+
+
+Question 2: Write a basic media query that adjusts the font size of a webpage for screens smaller than 600px.
+
+->Here’s a simple media query for that:
+
+Example:
+/* Default font size for larger screens */
+body {
+  font-size: 18px;
+}
+
+/* Smaller screens (less than 600px wide) */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+->This reduces the font size when the screen width is 600px or less, making text fit better on small devices like phones.
+
+9. Typography and Web Fonts
+
+Question 1: Explain the difference between web-safe fonts and custom web fonts. Why
+might you use a web-safe font over a custom font?
+
+1.Web-Safe Fonts
+->Web-safe fonts are fonts that are already installed on most operating systems and devices.
+
+Examples:
+Arial, Verdana, Times New Roman, Georgia, Courier New
+
+->Key Points:
+    No need to download anything
+    Load instantly
+    Look consistent across most devices
+    Very reliable for performance
+
+2.Custom Web Fonts
+->Custom web fonts are fonts that are not pre-installed on users' devices. They are loaded from the web using CSS like @font-face or services like Google Fonts.
+
+Examples:
+Roboto, Open Sans, Lato, Montserrat
+
+->Key Points:
+    More creative and unique design options
+    Must be downloaded when the page loads
+    Can slightly slow down page performance
+    May not display if font files fail to load
+
+->Why Use a Web-Safe Font Instead of a Custom Font?
+->You might choose a web-safe font when:
+    Speed matters – No font download = faster page load
+    Better compatibility – Works on almost all devices
+    Low bandwidth users – Helpful where internet is slow
+    Simplicity – No extra font hosting or setup needed
+    Reliability – No risk of font failing to load
+
+Question 2: What is the font-family property in CSS? How do you apply a custom Google
+Font to a webpage?
+
+1. What is the font-family property in CSS?
+->The font-family property in CSS specifies the typeface (font) that should be used for the text on a webpage. It can include:
+    Specific font names (like "Arial", "Times New Roman")
+    Generic font families (like serif, sans-serif, monospace)
+    A list of fonts, where the browser uses the first available font
+
+Example:
+p {
+    font-family: "Arial", sans-serif;
+}
+->This means: Use Arial if available; otherwise, use any default sans-serif font.
+
+2. How to apply a custom Google Font to a webpage
+
+Step 1: Choose a font from Google Fonts
+Step 2: Include the font in your HTML <head> using a <link> tag:
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+Step 3: Use the font in CSS with font-family:
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+->This will apply the Roboto font to the body text. You can list a fallback font (like sans-serif) in case Google Fonts fails to load.
+->if you want, I can also show a super-simple one-step method to directly embed Google Fonts without using the <link> tag. It’s handy for quick testing.

@@ -1,0 +1,334 @@
+1. HTML Basics
+
+Question 1: Define HTML. What is the purpose of HTML in web development?
+->HTML (HyperText Markup Language) is the standard markup language used to create and structure content on the web. It uses tags and elements to define things like headings, paragraphs, images, links, tables, forms, and more.
+
+1.Structure web content
+-HTML organizes text, images, videos, and other elements into a readable layout (headings, paragraphs, lists, etc.).
+2.Create links between pages
+-Using hyperlinks, HTML connects web pages together, forming the World Wide Web.
+3.Embed media
+-It allows embedding images, audio, video, and other multimedia content.
+4.Support forms and user input
+-HTML provides form elements (input, button, select, textarea) to collect user data.
+5.Work with CSS and JavaScript
+-CSS styles the HTML (colors, fonts, layout).
+-JavaScript adds interactivity and dynamic behavior.
+
+
+Question 2: Explain the basic structure of an HTML document. Identify the mandatory tags
+and their purposes
+-><!DOCTYPE html>: Defines the document as an HTML5 document.
+-><html>: The root tag that contains all HTML content.
+-><head>: Contains information about the page (like title and metadata).
+-><title>: Sets the title of the webpage shown in the browser tab.
+-><body>: Contains the visible content of the webpage.
+->Exmple:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Page</title>
+</head>
+<body>
+    Hello World
+</body>
+</html>
+
+Question 3: What is the difference between block-level elements and inline elements in
+HTML? Provide examples of each
+->1. Block-level Elements
+Definition: Block-level elements take up the full width of their parent container by default, and start on a new line. They can contain other block-level elements or inline elements.
+-Always start on a new line.
+-Can have width, height, margin, and padding applied.
+-Example:
+<div>This is a div (block-level)</div>
+<p>This is a paragraph (block-level)</p>
+<h1>This is a heading (block-level)</h1>
+<ul>
+    <li>List item 1</li>
+    <li>List item 2</li>
+</ul>
+<section>This is a section (block-level)</section>
+
+->2. Inline Elements
+Definition: Inline elements do not start on a new line. They only take up as much width as their content and cannot have height or width applied in the usual way.
+-Flow within the same line as surrounding text or elements.
+-Cannot contain block-level elements (only other inline elements or text).
+-Example:
+<span>This is a span (inline)</span>
+<a href="#">This is a link (inline)</a>
+<strong>Bold text (inline)</strong>
+<em>Italic text (inline)</em>
+<img src="image.jpg" alt="Image (inline)">
+
+
+Question 4: Discuss the role of semantic HTML. Why is it important for accessibility and SEO?
+Provide examples ofsemantic elements.
+->Semantic HTML refers to the use of HTML elements that clearly describe their meaning and purpose in the context of the web page. Instead of just defining how content looks (like <div> or <span>), semantic elements describe what the content is.
+
+1.<header>
+Represents the header of a page or section (logo, navigation).
+2.<nav>
+Represents a navigation menu.
+3.<main>
+Represents the main content of the document.
+4.<footer>
+Represents the footer of a page or section.
+5.<article>
+Represents a self-contained article or blog post.
+6.<section>
+Represents a thematic grouping of content.
+7.<aside>
+Represents content related to the main content (like a sidebar).
+8.<figure> & <figcaption>
+For images and their captions.
+9.<mark>
+Highlights important text.
+10.<time>
+Represents dates and times.
+
+->Example:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Semantic HTML Example</title>
+</head>
+<body>
+    <header>
+        <h1>My Blog</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <h2>Understanding Semantic HTML</h2>
+            <p>Semantic HTML helps both users and search engines understand web content.</p>
+        </article>
+
+        <aside>
+            <h3>Related Posts</h3>
+            <ul>
+                <li><a href="#">HTML Basics</a></li>
+                <li><a href="#">CSS for Beginners</a></li>
+            </ul>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 My Blog. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+2. HTML Forms
+
+Question 1: What are HTML forms used for? Describe the purpose of the input, textarea,
+select, and button elements.
+->HTML forms are used to collect input from users on a website. They allow users to enter data which can then be sent to a server for processing, such as login information, registration details, search queries, feedback, or any kind of data submission.
+->A basic HTML form uses the <form> tag and can contain different form elements like text fields, checkboxes, radio buttons, buttons, and more.
+1.<input>
+-The <input> element is used to create interactive fields where users can enter data.
+-It is versatile because the type attribute can define different kinds of input:
+-Purpose: Collect short, single-line data such as name, email, password, or selections.
+-Example:
+<input type="text" name="username" placeholder="Enter your name">
+<input type="password" name="password">
+<input type="email" name="email">
+<input type="checkbox" name="subscribe">
+<input type="radio" name="gender" value="male">
+<input type="submit" value="Submit">
+
+2.<textarea>
+-The <textarea> element is used to create a multi-line text input field.
+-Unlike <input type="text">, it allows users to enter longer messages or feedback.
+-Purpose: Collect long text data, like comments, descriptions, or messages.
+-Example:
+<textarea name="message" rows="5" cols="30" placeholder="Enter your message here"></textarea>
+
+3.<select>
+-Creates a dropdown list of options, allowing users to select one or more choices.
+-Purpose: Allow users to choose from predefined options instead of typing manually.
+-Example
+<select name="country">
+  <option value="india">India</option>
+  <option value="usa">USA</option>
+  <option value="uk">UK</option>
+</select>
+
+4.<button>
+-Used to create clickable buttons within a form.
+-Can submit the form or trigger JavaScript actions:
+-Example:
+<button type="submit">Submit</button>
+<button type="reset">Reset</button>
+<button type="button" onclick="alert('Hello')">Click Me</button>
+
+Question 2: Explain the difference between the GET and POST methods in form submission.
+When should each be used?
+->GET
+-Sends form data in the URL.
+-Used to retrieve data.
+-Example: search forms.
+-Limited data, visible in URL, can be bookmarked.
+
+->POST
+-Sends form data in the request body.
+-Used to submit or update data.
+-Example: login, registration forms.
+-Large/hidden data, more secure, cannot be bookmarked.
+
+->Rule: GET = read/view, POST = send/change.
+
+Question 3: What is the purpose of the label element in a form, and how does it improve
+accessibility?
+
+1.Association with Form Controls
+->The <label> explicitly associates descriptive text with a specific form input (like <input>, <textarea>, or <select>). This association can be done in two ways:
+
+a) Using the for attribute:
+-><label for="username">Username:</label>
+<input type="text" id="username" name="username">
+->Here, the for="username" in the <label> matches the id="username" in the input, linking them.
+b) Wrapping the input inside the label:
+-><label>Username:
+  <input type="text" name="username">
+</label>
+->This method automatically associates the label with the input.
+
+2.Improves Accessibility
+->Screen readers read the label text aloud when the user focuses on the input, so users know what information to provide.
+->Clicking the label also focuses the corresponding input, improving usability, especially for users with motor impairments
+
+3.Enhances Usability
+->Provides clear guidance on what each form field is for.
+->Reduces user errors by clarifying inputs.
+
+3. HTML Tables
+
+Question 1: Explain the structure of an HTML table and the purpose of each of the following
+elements: <table>, <tr>, <th>, <td>, and <thead>.
+-><table> : Creates the table.
+-><tr> : Creates a row in the table.
+-><th> : Creates a header cell (usually bold).
+-><td> : Creates a data cell (table content).
+-><thead> →: Groups the header rows of the table.
+->Example:
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tr>
+    <td>hardik</td>
+    <td>25</td>
+  </tr>
+</table>
+
+
+Question 2: What is the difference between colspan and rowspan in tables? Provide
+examples.
+1. colspan
+Definition: colspan makes a table cell extend horizontally across multiple columns.
+Syntax: <td colspan="number_of_columns">content</td>
+Example:
+<table border="1">
+  <tr>
+    <th>Product</th>
+    <th colspan="2">Price</th>
+  </tr>
+  <tr>
+    <td>Apple</td>
+    <td>100</td>
+    <td>USD</td>
+  </tr>
+  <tr>
+    <td>Banana</td>
+    <td>50</td>
+    <td>USD</td>
+  </tr>
+</table>
+
+2. rowspan
+Definition: rowspan makes a table cell extend vertically across multiple rows.
+Syntax: <td rowspan="number_of_rows">content</td>
+Example:
+<table border="1">
+  <tr>
+    <th>Category</th>
+    <th>Product</th>
+    <th>Price</th>
+  </tr>
+  <tr>
+    <td rowspan="2">Fruits</td>
+    <td>Apple</td>
+    <td>100</td>
+  </tr>
+  <tr>
+    <td>Banana</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td rowspan="2">Vegetables</td>
+    <td>Tomato</td>
+    <td>30</td>
+  </tr>
+  <tr>
+    <td>Potato</td>
+    <td>20</td>
+  </tr>
+</table>
+
+Question 3: Why should tables be used sparingly for layout purposes? What is a better
+alternative?
+->Tables should be used sparingly for layout purposes because they were originally designed to display tabular data, not to structure the layout of a webpage. Using tables for layout can cause several problems:
+->Problems with using tables for layout:
+    1.Poor accessibility: Screen readers and other assistive technologies may read table markup as data, confusing users with disabilities.
+    2.Less flexible design: Table layouts are rigid and do not adapt well to different screen sizes, making responsive design difficult.
+    3.Slower page loading: Tables can create more HTML code and nesting, which slows down page rendering.
+    4.Maintenance difficulty: Changing a table-based layout often requires altering multiple rows and columns, which  is cumbersome.
+    5.SEO issues: Search engines may misinterpret content structure when tables are misused for layout
+
+->Better alternative:
+    The modern approach is to use CSS (Cascading Style Sheets) for layout. CSS provides flexible and semantic ways to structure pages:
+
+Flexbox: Ideal for one-dimensional layouts (rows or columns).
+CSS Grid: Powerful for two-dimensional layouts (rows and columns simultaneously).
+Positioning and floats: For more specific layout needs, though less preferred tay.
+
+->Example:
+Instead of a table for a two-column layout:
+
+<!-- Table layout (bad practice) -->
+<table>
+  <tr>
+    <td>Sidebar</td>
+    <td>Main Content</td>
+  </tr>
+</table>
+
+->Use CSS Grid:
+<div class="container">
+  <div class="sidebar">Sidebar</div>
+  <div class="main">Main Content</div>
+</div>
+
+<style>
+.container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 10px;
+}
+</style>
+
+
+
+
