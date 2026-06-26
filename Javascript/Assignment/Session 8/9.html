@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let cart =[
+            {
+                pname:"Moblie",
+                price:20000,
+                qty:2
+            },
+            {
+                pname:"Chopper",
+                price: 1000,
+                qty:3
+            },
+            {
+                pname: "laptop",
+                price:50000,
+                qty:4
+            },
+            {
+                pname:"mixer",
+                price:3000,
+                qty:5
+            }
+        ];
+        let data="";
+        for(product of cart){
+            // alert(product.pname + "\n" +product.price+ "\n" + product.qty);
+            // console.log(product);
+            // alert(JSON.stringify(product));
+            let totalprice = product.price * product.qty;
+            // alert(product.pname +":"+ totalprice);
+            data += product.pname + ":" + totalprice +"\n";
+        }
+        alert(data);
+    </script>
+</body>
+</html>

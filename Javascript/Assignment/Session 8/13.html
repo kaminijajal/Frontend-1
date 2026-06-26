@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let orders = [
+            {
+                orderId:1,
+                items:[
+                    {itemname:"laptop",price:30000},
+                    {itemname:"Mouse",price:500}
+                ],
+                delivery:{
+                    address:"Ahemdabad",
+                    status:"Delivered"
+                }
+            },
+            {
+                orderId:2,
+                items:[
+                    {itemname:"Moblie",price:20000},
+                    {itemname:"Cover",price:200},
+                    {itemname:"Charger",price:600}
+                ],
+                delivery:{
+                    address:"Rajkot",
+                    status:"Pending"
+                }
+            },
+            {
+                orderId:3,
+                items:[
+                    {itemname:"Mixer",price:3000},
+                    {itemname:"Mixer Cup",price:200}
+                ],
+                delivery:{
+                    address:"Mumbai",
+                    status:"On the way"
+                }
+            }
+        ];
+        let data ="";
+        for(order of orders){
+            let totalprice = 0;
+            for(item of order.items){
+                totalprice = totalprice + item.price;   
+            }
+            
+            data += "OrderId : " + order.orderId +"\n"+ 
+                    "Total : " + totalprice +"\n"
+                    + "----------------------\n"  ;
+            // console.log(data);
+            
+        }
+        alert(data);  
+       
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //using function
+        function formatFollowers(followers){
+            if(followers>=1000000){
+                let f = followers/1000000 + "M";
+                return f;    
+            }
+            else if(followers>=1000){
+                let f = followers/1000 + "K";
+                return f;
+            }
+            else{
+                let f = `${followers} followers`;
+                return f;
+            }
+        }
+        console.log(formatFollowers(prompt("Enter Followers")));
+ 
+        //using Arrow function
+        let formatFollower = followers =>{
+             if(followers>=1000000){
+                let f = followers/1000000 + "M";
+                return f;    
+            }
+            else if(followers>=1000){
+                let f = followers/1000 + "K";
+                return f;
+            }
+            else{
+                let f = `${followers} followers`;
+                return f;
+            }
+        }
+        console.log(formatFollower(prompt("Enter Followers")));
+    </script>
+</body>
+</html>

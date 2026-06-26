@@ -1,0 +1,107 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Page background */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+     transition: 10;
+}
+
+/* Form wrapper */
+.abc {
+    width: 100%;
+}
+
+/* Form row */
+.frm {
+    margin-bottom: 15px;
+}
+
+/* Labels */
+.label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+/* Inputs, select, textarea */
+.input,
+.select,
+.text {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: 3s;
+}
+
+/* Textarea */
+.text {
+    resize: none;
+    height: 80px;
+}
+
+/* Focus effect */
+.input:focus,
+.select:focus,
+.text:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+}
+
+/* Radio & checkbox alignment */
+.frm input[type="radio"],
+.frm input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+    margin-left: 10px;
+}
+/* .abcc{
+    height: 50px;
+} */
+/* Buttons */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background: #667eea;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-right: 10px;
+}
+
+/* Button hover */
+.btn:hover {
+    background: #d5d8ed;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .container {
+        padding: 20px;
+    }
+}

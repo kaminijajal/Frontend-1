@@ -1,0 +1,385 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Inter', sans-serif;
+    text-decoration: none;
+   
+}
+body{
+    /* background: lightblue; */
+    height: 100%;
+    width: 100%;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 52px;
+    width: 100%;
+    background-color:white;
+}
+.item:hover{
+    background-color:rgb(165, 157, 157);
+}
+.nav-items{
+    display: flex;
+    padding: 40px,0px;
+}
+ 
+.nav-items{
+    display: flex;
+    
+}
+#logo{
+    display: flex;
+    background: red;
+    color: white;
+    gap: 20px;
+}
+#logo:hover{
+    background-color:rgb(165, 157, 157);
+    color: black;
+}
+.item,a{
+    padding:17px;
+    color:black;
+    
+} 
+
+.btn-btn{
+    background:lightgray;
+    
+}
+.hero-div{
+    position: relative;
+    height: 600px;
+    width: 100%;
+}
+.hero-div img{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+.hero-text{
+    /* border: 2px solid black; */
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+ }
+ .form-div{
+    padding:  0px 20px;
+    /* border: 2px solid black; */
+ }
+.form-header{
+    background-color: red;
+    /* margin: 0px 20px; */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 200px;
+    color: white;
+    display: flex;
+    
+} 
+.form-header h3{
+    padding-left: 10px;
+    font-size: 30px;
+}
+.form-header i{
+    font-size: 30px;
+}
+.form-main {
+    background-color: white;
+    color: black;
+    padding:  10px;
+    font-size: 20px;
+}
+.m-first ,.m-sec{
+    display: flex;
+    padding: 10px;
+}
+.m-r-left{
+    padding-left:20px ;
+}
+.type{
+    display: flex; 
+    padding-bottom:10px ;
+}
+.type p{
+    padding-left: 10px;
+}
+.type1{
+    display: flex;
+    flex-direction: column; 
+}
+.m-f-left input{
+    padding: 10px;
+    width: 250px;
+}
+.m-r-left input{
+    padding: 10px;
+    width: 250px;
+}
+.type2{
+    padding-left: 20px;
+}
+.type1 p{
+    margin: 0;
+}
+.btn1{
+    background-color:rgb(103, 100, 100);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 15px;
+}
+.btn{
+    padding-left: 10px;
+    padding-top: 10px;
+}
+.btn1{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 18px;
+}
+.btn1 i{
+    padding-right: 10px;
+}
+
+footer{
+    padding: 50px 0px;
+    background-color: black;
+    color: white;
+}
+.main-footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+    font-size: 20px;
+}
+/* ===============================rooms.html============================ */
+body{
+    background:#f1f1f1;
+}
+.container{
+    /* border: 2px solid black; */
+    padding: 30px 10px;
+}
+.room-text
+{
+    padding: 10px;
+}
+.room-text h2{
+    padding-bottom: 20px;
+}
+.select{
+    display: flex;
+    padding: 10px;
+    gap:20px
+    /* justify-content: space-between; */
+}
+.menu{
+    display: flex;
+    padding-bottom: 5px;
+}
+.menu i{
+    padding-right:10px ;
+}
+.col input{
+    width: 300px;
+    padding: 10px;
+}
+.col1 input{
+    width: 220px;
+    padding: 10px;
+}
+.col button{
+    width:200px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+}
+.card{
+    /* padding: 10px; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; 
+
+}
+.items{
+    padding: 0px;
+    border: 2px solid black;
+    height: auto;
+    width: 100%;
+    background-color: white;
+}
+.items img{
+    /* height: 100%; */
+    width: 100%;
+}
+.content1{
+    margin: 10px 10px;
+}
+.content1 p{
+    font-size: 20px;
+    padding: 10px;
+}
+.button{
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border: none;
+    font-size: 15px;
+}
+.button:hover{
+    background-color:rgb(165, 157, 157);
+    color: black;
+}
+/* ==============about.html============== */
+.about{
+    display: flex;
+}
+.about-item{
+    padding: 10px;
+}
+.about-item i{
+    font-size: 20px;
+    background-color: black;
+    color:white;
+    margin-top: 10px;
+}
+.about-first{
+    display: flex;   
+    padding: 50px 10px;
+    justify-content: space-evenly;
+}
+.about-items i{
+    color: red;
+}
+.about-sec{
+    background-color: red;
+    color: white;
+    height: 130px;
+    width: 100%;
+    /* opacity: 0.7; */
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    gap: 20px;   
+}
+.about-sec i{
+    margin-left: 30px;
+    font-size: 20px;
+    padding: 10px;
+    background-color:orangered;
+}
+.about-third{
+    padding: 10px;
+    width: 100%;
+    display: grid;
+    gap:20px;
+   grid-template-columns: repeat(4,1fr);
+  
+}
+
+#cols{
+    grid-column:1/ span 2;
+    grid-row: 1/ span 2;  
+    height: 550px; 
+}
+.cols img{
+    height: 100%;
+    width: 100%;
+}
+
+.sethw{
+    height: 260px;
+}
+.email{
+    height: 280px;
+    width: 100%;
+    /* border: 2px solid pink; */
+    margin: 80px 0px;
+    background-color: rgb(12, 12, 12);
+    opacity: 0.7;
+    padding: 20px;
+    
+}
+.email:hover{
+    background-color:black;
+    opacity: 1.0;
+
+}   
+
+.aboutP{
+    padding-top: 25px;
+    font-size: 30px;
+    color: white;
+}
+.aboutP1{
+    padding-top: 15px;
+    font-size: 18px;
+    color: white;
+}
+.input1 input{
+    padding: 12px;
+    width: 100%;
+    
+}
+.input1 button{
+    background-color: rgb(245, 46, 46);
+    padding: 12px;
+    color: white;
+    border: none;
+    font-size: 15px;
+    margin-top: 20px;
+}
+.input1 button:hover{
+    background-color:rgb(165, 157, 157);
+    color: black;
+}
+h2{
+    font-size: 30px;
+}
+.conatct{
+padding: 10px;
+}
+.container p{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.container p i{
+    color: red;
+    width: 25px;   /* same space for all icons */
+    font-size: 15px;
+    margin-left: 10px;
+}
+.form input{
+    width: 99%;
+    padding: 18px 10px;
+    margin-bottom: 18px;
+    border:1px solid grey;
+    margin: 10px;
+
+}
+.form button{
+    background-color: black;
+    color:  white;
+    padding: 15px;
+    border:  none;
+    margin-left: 10px;
+    margin-top: 10px;
+}

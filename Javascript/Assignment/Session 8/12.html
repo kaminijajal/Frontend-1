@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     
+        let moives = [
+        {
+            title:"Avatar",
+            year:2009,
+            rating:{
+                imdb:5.5,
+                rottenTomatoes:80
+            }
+        },
+        {
+            title:"Titanic",
+            year:1997,
+            rating:{
+                imdb: 8.7,
+                rottenTomatoes: 100
+            }
+        },
+        {
+            title:"Gladiator",
+            year:2000,
+            rating:{
+                imdb:9.6,
+                rottenTomatoes:130
+            }
+        }
+
+    ];
+    let data = "";
+    for(moive of moives){
+        // alert(moive.title);
+        // console.log(moive);
+        
+       data += moive.title + "- IMDb Rating" + moive.rating.imdb +"\n";
+    }
+    alert(data);
+    </script>
+</body>
+</html>

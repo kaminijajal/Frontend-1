@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Semantic Layout</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header, footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .container {
+            display: flex;
+            height: 450px;
+        }
+
+        main {
+            flex: 3;
+            padding: 20px;
+            background: #f4f6f9;
+        }
+
+        aside {
+            flex: 1;
+            padding: 20px;
+            background: #ddd;
+        }
+
+        footer {
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1><u>My Website</u></h1>
+</header>
+
+<div class="container">
+    <main>
+        <h2><u>Main Content</u></h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis, sed non. Exercitationem eius iste a rerum animi suscipit dignissimos molestias, delectus, minima accusamus necessitatibus! Rem quo ducimus quibusdam at consequatur.</p>
+    </main>
+
+    <aside>
+        <h2><u>Aside</u></h2>
+        <h4>Unordered List</h4>
+       
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+        </ul>
+        <h4>Ordered List</h4>
+        <ol>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>Forth</li>
+            <li>Fifth</li>
+        </ol>
+    </aside>
+</div>
+
+<footer>
+    <h2><u>Footer</u></h2>
+</footer>
+
+</body>
+</html>
