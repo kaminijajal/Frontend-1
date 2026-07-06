@@ -1,5 +1,5 @@
 {
-  "name": "product",
+  "name": "counter",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "prop-types": "^15.8.1",
+    "@iconify-react/flat-color-icons": "^1.0.2",
+    "@iconify-react/fluent-emoji-flat": "^1.0.2",
+    "@iconify-react/glyphs-poly": "^1.0.2",
+    "@iconify-react/ri": "^1.0.2",
+    "@iconify-react/streamline-color": "^1.0.2",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },
