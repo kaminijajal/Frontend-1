@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flipkart Cart Utils Refactor</title>
+</head>
+<body>
+
+  <h2>Check Console for Cart Operations 🛒</h2>
+
+  <script type="module">
+    /**************** cartUtils.js (module) ****************/
+
+    let cart = [];
+
+    export function addToCart(item) {
+      cart.push(item);
+      console.log(`${item.name} added to cart`);
+    }
+
+    export function removeFromCart(itemName) {
+      cart = cart.filter(item => item.name !== itemName);
+      console.log(`${itemName} removed from cart`);
+    }
+
+    export function calculateTotal() {
+      return cart.reduce((total, item) => total + item.price, 0);
+    }
+
+    // expose cart for debugging
+    export { cart };
+
+
+    /**************** main.js (module usage) ****************/
+
+    // Simulated imports (same file module scope)
+    import { addToCart, removeFromCart, calculateTotal } from "./dummy.js";
+
+    // ⚠️ Since single file HTML cannot really import itself,
+    // we re-use functions directly in this module scope:
+
+    const fakeAddToCart = addToCart;
+    const fakeRemoveFromCart = removeFromCart;
+    const fakeCalculateTotal = calculateTotal;
+
+    // Demo actions
+    fakeAddToCart({ name: "Shoes", price: 2000 });
+    fakeAddToCart({ name: "Watch", price: 5000 });
+    fakeAddToCart({ name: "Bag", price: 1500 });
+
+    console.log("Total:", fakeCalculateTotal());
+
+    fakeRemoveFromCart("Watch");
+
+    console.log("Total after removal:", fakeCalculateTotal());
+  </script>
+
+</body>
+</html>

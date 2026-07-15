@@ -1,0 +1,93 @@
+Given the following code snippet, fix the bug so that clicking the 'X' icon on any card removes only that card, even if cards are added dynamically:<br><br><code>document.querySelectorAll('.remove-btn').forEach(btn => { btn.addEventListener('click', function() { this.parentElement.remove(); }); });</code><br><br><em><strong>Hint:</strong> Use event delegation by adding a single event listener to the parent container instead of looping through all buttons.</em><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fix Remove Button with Event Delegation</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .add-btn {
+      padding: 10px 14px;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 400px;
+    }
+
+    .card {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #f9f9f9;
+    }
+
+    .remove-btn {
+      cursor: pointer;
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Product Cards</h2>
+
+  <button class="add-btn" id="addCard">Add Card</button>
+
+  <div class="container" id="container">
+
+    <div class="card">
+      <span>Product 1</span>
+      <span class="remove-btn">X</span>
+    </div>
+
+    <div class="card">
+      <span>Product 2</span>
+      <span class="remove-btn">X</span>
+    </div>
+
+  </div>
+
+  <script>
+    const container = document.getElementById("container");
+    const addBtn = document.getElementById("addCard");
+
+    let count = 3;
+
+    // Add new dynamic card
+    addBtn.addEventListener("click", () => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      card.innerHTML = `
+        <span>Product ${count}</span>
+        <span class="remove-btn">X</span>
+      `;
+
+      container.appendChild(card);
+      count++;
+    });
+
+    // ✅ EVENT DELEGATION FIX
+    container.addEventListener("click", (event) => {
+      if (event.target.classList.contains("remove-btn")) {
+        const card = event.target.closest(".card");
+        card.remove();
+      }
+    });
+  </script>
+
+</body>
+</html>

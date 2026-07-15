@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form Validation</title>
+  <style>
+    body {
+      font-family: Arial;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f2f2f2;
+    }
+
+    .form-box {
+      background: white;
+      padding: 20px;
+      width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-box">
+  <h2>Login</h2>
+
+  <label>Email</label>
+  <input type="text" id="email" />
+  <div id="emailError" class="error"></div>
+
+  <label>Password</label>
+  <input type="password" id="password" />
+  <div id="passwordError" class="error"></div>
+
+  <button onclick="validateForm()">Login</button>
+</div>
+
+<script>
+  function validateForm() {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    const emailError = document.getElementById("emailError");
+    const passwordError = document.getElementById("passwordError");
+
+    let isValid = true;
+
+    // Email validation
+    if (email === "") {
+      emailError.textContent = "Email is required";
+      isValid = false;
+    } else {
+      emailError.textContent = "";
+    }
+
+    // Password validation
+    if (password === "") {
+      passwordError.textContent = "Password is required";
+      isValid = false;
+    } else {
+      passwordError.textContent = "";
+    }
+
+    // Success message (optional)
+    if (isValid) {
+      alert("Login successful!");
+    }
+  }
+</script>
+
+</body>
+</html>

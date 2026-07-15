@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spotify URL Validation</title>
+</head>
+<body>
+
+  <h2>Check Console for Validation Output</h2>
+
+  <script>
+    // Function to validate Spotify playlist URL
+    function checkPlaylistURL(url) {
+      if (!url.startsWith("https://open.spotify.com/")) {
+        throw new Error("Invalid Spotify URL");
+      }
+      return "Valid Spotify URL";
+    }
+
+    // Test URLs
+    const url1 = "https://open.spotify.com/playlist/12345";
+    const url2 = "https://google.com/music";
+
+    // Try...catch...finally handling
+    try {
+      console.log(checkPlaylistURL(url1)); // valid
+      console.log(checkPlaylistURL(url2)); // invalid
+    } catch (error) {
+      console.log(error.message); // logs custom error message
+    } finally {
+      console.log("Validation complete");
+    }
+  </script>
+
+</body>
+</html>

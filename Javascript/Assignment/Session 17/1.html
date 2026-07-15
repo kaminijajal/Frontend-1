@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Song Cards - Event Delegation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 400px;
+    }
+
+    .card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f2f2f2;
+      padding: 10px 12px;
+      margin: 8px 0;
+      border-radius: 6px;
+    }
+
+    .delete {
+      cursor: pointer;
+      color: red;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .delete:hover {
+      background: #ffdddd;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>My Playlist</h2>
+
+  <div class="container" id="songContainer"></div>
+
+  <script>
+    const songs = [
+      "Blinding Lights",
+      "Shape of You",
+      "Levitating",
+      "Believer",
+      "Perfect"
+    ];
+
+    const container = document.getElementById("songContainer");
+
+    // Render song cards
+    songs.forEach(song => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      card.innerHTML = `
+        <span>${song}</span>
+        <span class="delete">X</span>
+      `;
+
+      container.appendChild(card);
+    });
+
+    // Event delegation (single listener on parent)
+    container.addEventListener("click", function (e) {
+      if (e.target.classList.contains("delete")) {
+        const card = e.target.parentElement;
+        card.remove(); // remove only clicked card
+      }
+    });
+  </script>
+
+</body>
+</html>

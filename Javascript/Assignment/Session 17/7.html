@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Instagram Stories - Event Delegation</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    .stories {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .story {
+      width: 120px;
+      height: 120px;
+      background: #f2f2f2;
+      border-radius: 10px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .remove {
+      position: absolute;
+      top: 5px;
+      right: 8px;
+      cursor: pointer;
+      color: red;
+      font-weight: bold;
+      user-select: none;
+    }
+
+    .add-btn {
+      margin-bottom: 15px;
+      padding: 10px 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Instagram Stories</h2>
+
+  <button class="add-btn" id="addStory">Add Story</button>
+
+  <div class="stories" id="stories">
+
+    <div class="story">
+      Story 1
+      <div class="remove">X</div>
+    </div>
+
+    <div class="story">
+      Story 2
+      <div class="remove">X</div>
+    </div>
+
+    <div class="story">
+      Story 3
+      <div class="remove">X</div>
+    </div>
+
+  </div>
+
+  <script>
+    const stories = document.getElementById("stories");
+    const addBtn = document.getElementById("addStory");
+
+    let count = 4;
+
+    // Add new story dynamically
+    addBtn.addEventListener("click", () => {
+      const story = document.createElement("div");
+      story.classList.add("story");
+
+      story.innerHTML = `
+        Story ${count}
+        <div class="remove">X</div>
+      `;
+
+      stories.appendChild(story);
+      count++;
+    });
+
+    // SINGLE event listener (event delegation)
+    stories.addEventListener("click", (event) => {
+      if (event.target.classList.contains("remove")) {
+        const storyCard = event.target.closest(".story");
+        storyCard.remove();
+      }
+    });
+  </script>
+
+</body>
+</html>

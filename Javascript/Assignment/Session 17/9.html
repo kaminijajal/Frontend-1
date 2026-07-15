@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cart with Dynamic Products</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .add-btn {
+      padding: 10px 14px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    .cart {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 500px;
+    }
+
+    .card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #ddd;
+      padding: 12px;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .name {
+      font-weight: bold;
+    }
+
+    .price {
+      color: green;
+    }
+
+    .remove {
+      cursor: pointer;
+      color: red;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 4px;
+      user-select: none;
+    }
+
+    .remove:hover {
+      background: #ffe5e5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Shopping Cart</h2>
+
+  <button class="add-btn" id="addProduct">Add Random Product</button>
+
+  <div class="cart" id="cart">
+
+    <div class="card">
+      <div class="info">
+        <div class="name">iPhone 15</div>
+        <div class="price">₹79,999</div>
+      </div>
+      <div class="remove">X</div>
+    </div>
+
+    <div class="card">
+      <div class="info">
+        <div class="name">AirPods Pro</div>
+        <div class="price">₹24,999</div>
+      </div>
+      <div class="remove">X</div>
+    </div>
+
+  </div>
+
+  <script>
+    const cart = document.getElementById("cart");
+    const addBtn = document.getElementById("addProduct");
+
+    const products = [
+      { name: "Samsung Galaxy S24", price: "₹74,999" },
+      { name: "Boat Headphones", price: "₹1,499" },
+      { name: "Nike Shoes", price: "₹3,999" },
+      { name: "Smart Watch", price: "₹2,999" },
+      { name: "Gaming Mouse", price: "₹1,199" }
+    ];
+
+    let count = 0;
+
+    // Add random product dynamically
+    addBtn.addEventListener("click", () => {
+      const product = products[Math.floor(Math.random() * products.length)];
+
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      card.innerHTML = `
+        <div class="info">
+          <div class="name">${product.name}</div>
+          <div class="price">${product.price}</div>
+        </div>
+        <div class="remove">X</div>
+      `;
+
+      cart.appendChild(card);
+      count++;
+    });
+
+    // ✅ SINGLE EVENT LISTENER (Event Delegation)
+    cart.addEventListener("click", (event) => {
+      if (event.target.classList.contains("remove")) {
+        const card = event.target.closest(".card");
+        card.remove();
+      }
+    });
+  </script>
+
+</body>
+</html>

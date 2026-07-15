@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create Playlist</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: white;
+      display: flex;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .container {
+      width: 400px;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #1db954;
+      border: none;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: #17a74a;
+    }
+
+    .playlist {
+      margin-top: 15px;
+      padding: 10px;
+      background: #2a2a2a;
+      border-radius: 5px;
+    }
+
+    .title {
+      font-weight: bold;
+      color: #1db954;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Create Playlist</h2>
+
+    <input type="text" id="name" placeholder="Playlist Name" />
+    <textarea id="desc" placeholder="Playlist Description"></textarea>
+    <button onclick="addPlaylist()">Add Playlist</button>
+
+    <h3>Your Playlists</h3>
+    <div id="playlistContainer"></div>
+  </div>
+
+  <script>
+    // Array to store playlists
+    let playlists = [];
+
+    function addPlaylist() {
+      const name = document.getElementById("name").value;
+      const desc = document.getElementById("desc").value;
+
+      if (!name) {
+        alert("Please enter playlist name!");
+        return;
+      }
+
+      // Create playlist object
+      const playlist = {
+        name: name,
+        description: desc
+      };
+
+      // Store in array
+      playlists.push(playlist);
+
+      // Clear inputs
+      document.getElementById("name").value = "";
+      document.getElementById("desc").value = "";
+
+      // Render UI
+      renderPlaylists();
+    }
+
+    function renderPlaylists() {
+      const container = document.getElementById("playlistContainer");
+      container.innerHTML = "";
+
+      playlists.forEach((p, index) => {
+        container.innerHTML += `
+          <div class="playlist">
+            <div class="title">${index + 1}. ${p.name}</div>
+            <div>${p.description}</div>
+          </div>
+        `;
+      });
+    }
+  </script>
+
+</body>
+</html>

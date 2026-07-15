@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recent Searches</title>
+</head>
+<body>
+
+    <h2>Recent Search</h2>
+
+    <input type="text" id="searchBox" placeholder="Enter search term">
+    <button onclick="addSearch()">Save Search</button>
+
+    <p id="output"></p>
+
+    <script>
+        function saveRecentSearch(query) {
+            // Get existing searches or create an empty array
+            let searches = JSON.parse(localStorage.getItem("recentSearches")) || [];
+
+            // Add new search
+            searches.push(query);
+
+            // Save updated array to localStorage
+            localStorage.setItem("recentSearches", JSON.stringify(searches));
+        }
+
+        function addSearch() {
+            const query = document.getElementById("searchBox").value;
+
+            if (query !== "") {
+                saveRecentSearch(query);
+
+                document.getElementById("output").innerHTML =
+                    "Recent Searches: " +
+                    JSON.parse(localStorage.getItem("recentSearches")).join(", ");
+
+                document.getElementById("searchBox").value = "";
+            }
+        }
+    </script>
+
+</body>
+</html>

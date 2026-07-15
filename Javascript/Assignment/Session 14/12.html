@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flipkart Wishlist Refactor</title>
+</head>
+<body>
+
+  <h2>Check Console for Wishlist Output 💖</h2>
+
+  <script type="module">
+    /**************** wishlistUtils.js (refactored module) ****************/
+
+    let wishlist = [];
+
+    export function addToWishlist(item) {
+      wishlist.push(item);
+      console.log(`${item} added to wishlist`);
+    }
+
+    export function removeFromWishlist(item) {
+      wishlist = wishlist.filter(i => i !== item);
+      console.log(`${item} removed from wishlist`);
+    }
+
+    export function listWishlist() {
+      console.log("💖 Wishlist Items:");
+      wishlist.forEach((item, index) => {
+        console.log(`${index + 1}. ${item}`);
+      });
+
+      if (wishlist.length === 0) {
+        console.log("Wishlist is empty");
+      }
+    }
+
+
+    /**************** wishlist.js (main usage) ****************/
+
+    // Simulated named imports (since single file)
+    import {
+      addToWishlist,
+      removeFromWishlist,
+      listWishlist
+    } from "./fake.js";
+
+    // Replace imports with actual functions in same scope
+    const add = addToWishlist;
+    const remove = removeFromWishlist;
+    const list = listWishlist;
+
+    // Demo usage
+    add("iPhone 15");
+    add("Nike Shoes");
+    add("Watch");
+
+    list();
+
+    remove("Nike Shoes");
+
+    list();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Emails Fetch</title>
+</head>
+<body>
+
+<h2>Open Console / Alert will show emails 📧</h2>
+
+<script>
+  fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(users => {
+      // Extract all emails
+      const emails = users.map(user => user.email);
+
+      // Join emails into a single string
+      const emailList = emails.join(', ');
+
+      // Show in alert box
+      alert("User Emails:\n" + emailList);
+    })
+    .catch(error => {
+      console.log("Error fetching users:", error);
+    });
+</script>
+
+</body>
+</html>

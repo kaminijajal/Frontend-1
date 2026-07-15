@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Debug addToCart Function</title>
+</head>
+<body>
+
+  <h2>🛒 Debug addToCart Function</h2>
+  <p>Open Developer Tools → Sources tab → set breakpoint → reload/run function</p>
+
+  <script>
+    function addToCart(item, quantity) {
+      console.log("🚀 Function started");
+
+      // 👉 Set breakpoint on this line in Sources tab
+      if (quantity === 0) {
+        debugger; // pauses execution automatically if DevTools is open
+
+        throw new Error(`❌ Cannot add "${item}" with quantity 0`);
+      }
+
+      console.log(`✅ Added "${item}" (Quantity: ${quantity}) to cart`);
+    }
+
+    // Test case (this will trigger breakpoint + error)
+    addToCart("Shoes", 0);
+
+    // You can also test normal case:
+    // addToCart("Watch", 2);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Myntra Cart Total</title>
+</head>
+<body>
+
+  <h2>Check Console for Total Price</h2>
+
+  <script>
+    const cart = [
+      { item: "Shirt", price: 999 },
+      { item: "Jeans", price: 1999 },
+      { item: "Shoes", price: 2499 },
+      { item: "Cap", price: 499 }
+    ];
+
+    // One-liner using map + reduce
+    const totalPrice = cart.map(item => item.price)
+                           .reduce((sum, price) => sum + price, 0);
+
+    console.log("Total Cart Price:", totalPrice);
+  </script>
+
+</body>
+</html>

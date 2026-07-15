@@ -1,0 +1,13 @@
+* Event Flow (Point-wise)
+1. Event flow is the process that describes how an event moves through the DOM.
+2. It has three phases:
+-> Capturing Phase: The event travels from the document down to the target element.
+-> Target Phase: The event reaches the element that was clicked.
+-> Bubbling Phase: The event travels back up from the target element to its parent elements.
+
+* Example of Event Bubbling (Shopping Cart App)
+-> A product card has a click event to open the product details page.
+-> The "Add to Cart" button inside the product card also has its own click event.
+-> When the user clicks "Add to Cart", the button's event runs first.
+-> Due to event bubbling, the product card's click event also runs, opening the product details page.
+-> This can be prevented by using event.stopPropagation().

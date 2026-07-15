@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favorite YouTube Channels</title>
+</head>
+<body>
+
+    <h2>Favorite YouTube Channels</h2>
+
+    <button onclick="showChannels()">Show Channel Names</button>
+
+    <p id="output"></p>
+
+    <script>
+        function getChannelNames(jsonString) {
+            const channels = JSON.parse(jsonString);
+            return channels.map(channel => channel.name);
+        }
+
+        function showChannels() {
+            const jsonData = `[
+                { "name": "CodeWithHarry", "subscribers": "6M" },
+                { "name": "freeCodeCamp.org", "subscribers": "10M" },
+                { "name": "Traversy Media", "subscribers": "2.5M" }
+            ]`;
+
+            const channelNames = getChannelNames(jsonData);
+
+            document.getElementById("output").innerHTML =
+                "Channel Names: " + channelNames.join(", ");
+        }
+    </script>
+
+</body>
+</html>

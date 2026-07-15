@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment Promise</title>
+</head>
+<body>
+
+<h2>Check Console for Payment Status</h2>
+
+<script>
+function processPayment() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Payment successful!");
+    }, 1000);
+  });
+}
+
+// Using the Promise
+processPayment()
+  .then((message) => {
+    console.log(message);
+  });
+</script>
+
+</body>
+</html>

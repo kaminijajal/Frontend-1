@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Total Likes</title>
+</head>
+<body>
+
+  <h2>Check Console for Total Likes</h2>
+
+  <script>
+    const posts = [
+      { id: 1, likes: 120 },
+      { id: 2, likes: 450 },
+      { id: 3, likes: 89 },
+      { id: 4, likes: 300 }
+    ];
+
+    const totalLikes = posts.reduce((accumulator, post) => {
+      return accumulator + post.likes;
+    }, 0);
+
+    console.log("Total Likes:", totalLikes);
+  </script>
+
+</body>
+</html>

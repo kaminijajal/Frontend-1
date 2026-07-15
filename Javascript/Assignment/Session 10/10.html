@@ -1,0 +1,31 @@
+const cricketFans = ['Virat', 'Rohit'];
+const footballFans = ['Messi', 'Ronaldo'];
+
+// Combine both arrays using the spread operator
+const allFans = [...cricketFans, ...footballFans];
+
+// Display the combined array
+console.log(allFans);<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spread Operator Example</title>
+</head>
+<body>
+  <h2>Spread Operator - Combine Arrays</h2>
+  <button onclick="combineFans()">Show All Fans</button>
+
+  <script>
+    const cricketFans = ['Virat', 'Rohit'];
+    const footballFans = ['Messi', 'Ronaldo'];
+
+    function combineFans() {
+      const allFans = [...cricketFans, ...footballFans];
+
+      console.log(allFans);
+      alert(allFans.join(", "));
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Playlist Add Song Example</title>
+</head>
+<body>
+
+  <h2>Check Console for Updated Playlist</h2>
+
+  <script>
+    class Playlist {
+      constructor(name, songs) {
+        this.name = name;
+        this.songs = songs;
+      }
+
+      // Add new song to playlist
+      addSong(songName) {
+        this.songs.push(songName);
+      }
+
+      // Display playlist
+      displayPlaylist() {
+        console.log(`🎵 Playlist: ${this.name}`);
+        this.songs.forEach((song, index) => {
+          console.log(`${index + 1}. ${song}`);
+        });
+      }
+    }
+
+    // Create playlist instance
+    const chillVibes = new Playlist("Chill Vibes", [
+      "Blinding Lights - The Weeknd",
+      "Stay - Justin Bieber",
+      "Levitating - Dua Lipa"
+    ]);
+
+    // Add two new songs
+    chillVibes.addSong("Peaches - Justin Bieber");
+    chillVibes.addSong("Sunflower - Post Malone");
+
+    // Display updated playlist
+    chillVibes.displayPlaylist();
+  </script>
+
+</body>
+</html>

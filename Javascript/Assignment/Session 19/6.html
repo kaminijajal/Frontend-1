@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Zomato Add Restaurant</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .app {
+      width: 420px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #e23744;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #e23744;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #c91f33;
+    }
+
+    .card {
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      background: #fafafa;
+    }
+
+    .title {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .rating {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="app">
+  <h2>Add Restaurant 🍽️</h2>
+
+  <input type="text" id="name" placeholder="Restaurant Name">
+  <input type="text" id="cuisine" placeholder="Cuisine (e.g. Italian, Indian)">
+  <input type="number" id="rating" placeholder="Rating (1-5)" min="1" max="5">
+
+  <button onclick="addRestaurant()">Add Restaurant</button>
+
+  <h3>Restaurant List</h3>
+  <div id="list"></div>
+</div>
+
+<script>
+  // Array to store restaurants
+  let restaurants = [];
+
+  function addRestaurant() {
+    const name = document.getElementById("name").value.trim();
+    const cuisine = document.getElementById("cuisine").value.trim();
+    const rating = document.getElementById("rating").value.trim();
+
+    // Validation
+    if (!name || !cuisine || !rating) {
+      alert("Please fill all fields!");
+      return;
+    }
+
+    // Create restaurant object
+    const restaurant = {
+      name: name,
+      cuisine: cuisine,
+      rating: Number(rating)
+    };
+
+    // Store in array
+    restaurants.push(restaurant);
+
+    // Clear inputs
+    document.getElementById("name").value = "";
+    document.getElementById("cuisine").value = "";
+    document.getElementById("rating").value = "";
+
+    // Update UI
+    renderRestaurants();
+
+    // Debug (optional)
+    console.log(restaurants);
+  }
+
+  function renderRestaurants() {
+    const list = document.getElementById("list");
+    list.innerHTML = "";
+
+    restaurants.forEach((r, index) => {
+      list.innerHTML += `
+        <div class="card">
+          <div class="title">${index + 1}. ${r.name}</div>
+          <div>Cuisine: ${r.cuisine}</div>
+          <div class="rating">⭐ ${r.rating}/5</div>
+        </div>
+      `;
+    });
+  }
+</script>
+
+</body>
+</html>

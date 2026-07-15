@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Debug Friends Loop</title>
+</head>
+<body>
+
+  <h2>👥 Debug Friends Loop</h2>
+  <p>Open DevTools → Sources → set breakpoint inside loop → step through</p>
+
+  <script>
+    const friends = ["Amit", "Neha", "Rahul", "Priya", "Karan"];
+
+    function printFriends() {
+      console.log("🚀 Starting loop...");
+
+      for (let i = 0; i < friends.length; i++) {
+        // 👉 Set breakpoint on this line in Sources tab
+        console.log("Friend:", friends[i]);
+
+        // You can also inspect 'i' and 'friends[i]' here
+      }
+
+      console.log("✅ Loop finished");
+    }
+
+    printFriends();
+  </script>
+
+</body>
+</html>

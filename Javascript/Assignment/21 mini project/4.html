@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Validator</title>
+</head>
+<body>
+    <script>
+        function validateURL(url) {
+            return url.startsWith("https://") && url.includes(".");
+        }
+
+        // Test cases
+        console.log(validateURL("https://www.google.com")); // true
+        console.log(validateURL("https://example.org"));    // true
+        console.log(validateURL("http://example.com"));     // false
+        console.log(validateURL("https://example"));        // false
+        console.log(validateURL("google.com"));             // false
+    </script>
+</body>
+</html>

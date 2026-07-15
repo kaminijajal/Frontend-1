@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Zomato Order Simulation</title>
+</head>
+<body>
+
+  <h2>Open Console to See Order Status</h2>
+
+  <script>
+    function placeOrder(item, callback) {
+      console.log("Placing order for:", item);
+
+      setTimeout(() => {
+        callback(`Your ${item} is being prepared`);
+      }, 1000);
+    }
+
+    // Callback function
+    function orderStatus(message) {
+      console.log(message);
+    }
+
+    // Test the function
+    placeOrder("Pizza", orderStatus);
+  </script>
+
+</body>
+</html>

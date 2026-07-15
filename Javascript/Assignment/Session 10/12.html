@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spread Operator Example</title>
+</head>
+<body>
+  <h2>Combine Zomato and Swiggy Dishes</h2>
+  <button onclick="showDishes()">Show All Dishes</button>
+
+  <script>
+    const zomatoDishes = ["Biryani", "Pizza", "Paneer Tikka"];
+    const swiggyDishes = ["Burger", "Dosa", "Pasta"];
+
+    function showDishes() {
+      const allDishes = [...zomatoDishes, ...swiggyDishes];
+
+      console.log(allDishes);
+      alert(allDishes.join(", "));
+    }
+  </script>
+</body>
+</html>

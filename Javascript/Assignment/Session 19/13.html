@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Restaurant Manager</title>
+</head>
+
+<body>
+
+<h2>Add Restaurant</h2>
+
+<input type="text" id="name" placeholder="Restaurant Name">
+<input type="text" id="cuisine" placeholder="Cuisine">
+<input type="number" id="rating" placeholder="Rating">
+
+<button onclick="handleSubmit()">Add Restaurant</button>
+
+<h3>Restaurant List</h3>
+<div id="list"></div>
+
+<script>
+  let restaurants = [];
+  let editIndex = -1; // tracks which item is being edited
+
+  function handleSubmit() {
+    const name = document.getElementById("name").value;
+    const cuisine = document.getElementById("cuisine").value;
+    const rating = document.getElementById("rating").value;
+
+    if (!name || !cuisine || !rating) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    const newData = { name, cuisine, rating };
+
+    // If edit mode
+    if (editIndex === -1) {
+      restaurants.push(newData);
+    } else {
+      restaurants[editIndex] = newData;
+      editIndex = -1;
+    }
+
+    clearForm();
+    renderList();
+  }
+
+  function renderList() {
+    const list = document.getElementById("list");
+    list.innerHTML = "";
+
+    restaurants.forEach((item, index) => {
+      list.innerHTML += `
+        <div>
+          <p><b>${item.name}</b> - ${item.cuisine} - ⭐ ${item.rating}</p>
+          <button onclick="editRestaurant(${index})">Edit</button>
+          <button onclick="deleteRestaurant(${index})">Delete</button>
+        </div>
+      `;
+    });
+  }
+
+  // ✅ EDIT FEATURE
+  function editRestaurant(index) {
+    document.getElementById("name").value = restaurants[index].name;
+    document.getElementById("cuisine").value = restaurants[index].cuisine;
+    document.getElementById("rating").value = restaurants[index].rating;
+
+    editIndex = index; // store index for update mode
+  }
+
+  // ✅ DELETE FEATURE
+  function deleteRestaurant(index) {
+    restaurants.splice(index, 1);
+    renderList();
+  }
+
+  function clearForm() {
+    document.getElementById("name").value = "";
+    document.getElementById("cuisine").value = "";
+    document.getElementById("rating").value = "";
+  }
+</script>
+
+</body>
+</html>

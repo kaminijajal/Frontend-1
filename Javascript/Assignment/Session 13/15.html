@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Stack Trace Example</title>
+</head>
+<body>
+
+  <h2>Open Console (F12) to See Error Stack Trace</h2>
+
+  <script>
+    /*
+      Stack trace explanation:
+      The error "User not found" was thrown inside checkUser().
+      The function loadProfile() called it, and loadProfile() was called by startApp().
+      The stack trace shows the chain of function calls that led to the error,
+      helping us identify exactly where the problem started.
+    */
+
+    function checkUser() {
+      throw new Error("User not found");
+    }
+
+    function loadProfile() {
+      checkUser();
+    }
+
+    function startApp() {
+      loadProfile();
+    }
+
+    startApp();
+  </script>
+
+</body>
+</html>

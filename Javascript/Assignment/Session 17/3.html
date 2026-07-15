@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Favorite Songs List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    ul {
+      max-width: 400px;
+      padding: 0;
+    }
+
+    li {
+      list-style: none;
+      background: #f3f3f3;
+      margin: 8px 0;
+      padding: 10px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 6px;
+    }
+
+    button {
+      background: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background: darkred;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>My Favorite Songs</h2>
+
+  <ul id="songList">
+    <li>
+      Blinding Lights
+      <button class="remove-btn">Remove</button>
+    </li>
+    <li>
+      Shape of You
+      <button class="remove-btn">Remove</button>
+    </li>
+    <li>
+      Levitating
+      <button class="remove-btn">Remove</button>
+    </li>
+    <li>
+      Believer
+      <button class="remove-btn">Remove</button>
+    </li>
+  </ul>
+
+  <script>
+    const songList = document.getElementById("songList");
+
+    // Event delegation: single listener on parent <ul>
+    songList.addEventListener("click", function (e) {
+      if (e.target.classList.contains("remove-btn")) {
+        const li = e.target.parentElement;
+        li.remove(); // removes only clicked item
+      }
+    });
+  </script>
+
+</body>
+</html>

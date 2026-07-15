@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flipkart Wishlist</title>
+</head>
+<body>
+
+    <h2>My Wishlist</h2>
+
+    <ul id="wishlist"></ul>
+
+    <script>
+        // Create an array of products
+        const products = [
+            { name: "Samsung Galaxy S24", price: 74999 },
+            { name: "Nike Sneakers", price: 4999 },
+            { name: "Boat Headphones", price: 1999 }
+        ];
+
+        // Save to localStorage (only if not already saved)
+        if (!localStorage.getItem("wishlist")) {
+            localStorage.setItem("wishlist", JSON.stringify(products));
+        }
+
+        // Read and parse data from localStorage
+        const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+        // Display wishlist
+        const list = document.getElementById("wishlist");
+
+        wishlist.forEach(product => {
+            const li = document.createElement("li");
+            li.textContent = `${product.name} - ₹${product.price}`;
+            list.appendChild(li);
+        });
+    </script>
+
+</body>
+</html>

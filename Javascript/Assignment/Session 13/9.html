@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Zomato Order Total</title>
+</head>
+<body>
+
+  <h2>Check Console for Order Total</h2>
+
+  <script>
+    // Function to calculate total order amount
+    function getOrderTotal(items) {
+      let total = 0;
+
+      for (let item of items) {
+        if (item.price < 0) {
+          throw new Error("Invalid item price");
+        }
+        total += item.price;
+      }
+
+      return total;
+    }
+
+    // Sample food order
+    const orderItems = [
+      { name: "Pizza", price: 250 },
+      { name: "Burger", price: 120 },
+      { name: "Fries", price: -50 } // invalid item
+    ];
+
+    // Try...catch for error handling
+    try {
+      const total = getOrderTotal(orderItems);
+      console.log("Total Order Amount:", total);
+    } catch (error) {
+      console.log("Error:", error.message);
+      console.log("Please check your cart items.");
+    }
+  </script>
+
+</body>
+</html>

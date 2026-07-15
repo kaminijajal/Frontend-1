@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flipkart Wishlist</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    button#addBtn {
+      padding: 10px 14px;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+
+    .wishlist {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .card {
+      width: 180px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 8px;
+      background: #fafafa;
+    }
+
+    .title {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      color: green;
+      margin-bottom: 10px;
+    }
+
+    .remove-btn {
+      background: red;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      cursor: pointer;
+      border-radius: 4px;
+      width: 100%;
+    }
+
+    .remove-btn:hover {
+      background: darkred;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>My Wishlist</h2>
+
+  <button id="addBtn">Add Product</button>
+
+  <div class="wishlist" id="wishlist">
+    
+    <div class="card">
+      <div class="title">Nike Shoes</div>
+      <div class="price">₹2,999</div>
+      <button class="remove-btn">Remove</button>
+    </div>
+
+    <div class="card">
+      <div class="title">Smart Watch</div>
+      <div class="price">₹1,999</div>
+      <button class="remove-btn">Remove</button>
+    </div>
+
+  </div>
+
+  <script>
+    const wishlist = document.getElementById("wishlist");
+    const addBtn = document.getElementById("addBtn");
+
+    let count = 1;
+
+    // Add new product dynamically
+    addBtn.addEventListener("click", () => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      card.innerHTML = `
+        <div class="title">New Product ${count}</div>
+        <div class="price">₹${999 + count * 100}</div>
+        <button class="remove-btn">Remove</button>
+      `;
+
+      wishlist.appendChild(card);
+      count++;
+    });
+
+    // Event delegation (single listener for all remove buttons)
+    wishlist.addEventListener("click", (event) => {
+      if (event.target.classList.contains("remove-btn")) {
+        const card = event.target.closest(".card");
+        card.remove();
+      }
+    });
+  </script>
+
+</body>
+</html>

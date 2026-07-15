@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment Validation</title>
+</head>
+<body>
+
+  <h2>Check Console for Payment Status</h2>
+
+  <script>
+    // Function to check payment amount
+    function checkPaymentAmount(amount) {
+      if (amount <= 0) {
+        throw new Error("Amount must be positive");
+      }
+      return "Payment accepted";
+    }
+
+    // Test cases
+    try {
+      console.log(checkPaymentAmount(500));   // valid payment
+      console.log(checkPaymentAmount(-100));  // invalid payment
+    } catch (error) {
+      console.log(error.message);
+    }
+  </script>
+
+</body>
+</html>

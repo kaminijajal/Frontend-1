@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flipkart Search (Callback + Promise)</title>
+</head>
+<body>
+
+<h2>Check Console for Output</h2>
+
+<script>
+const products = [
+  "iPhone 15",
+  "Samsung Galaxy S24",
+  "OnePlus 12",
+  "Redmi Note 13",
+  "HP Laptop",
+  "Dell Inspiron"
+];
+
+
+// ------------------------
+// 1. CALLBACK VERSION
+// ------------------------
+function searchProductsCallback(query, callback) {
+  setTimeout(() => {
+    const result = products.filter(product =>
+      product.toLowerCase().includes(query.toLowerCase())
+    );
+
+    callback(result);
+  }, 1000);
+}
+
+
+// ------------------------
+// 2. PROMISE VERSION
+// ------------------------
+function searchProductsPromise(query) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const result = products.filter(product =>
+        product.toLowerCase().includes(query.toLowerCase())
+      );
+
+      resolve(result);
+    }, 1000);
+  });
+}
+
+
+// ------------------------
+// TEST CALLBACK
+// ------------------------
+searchProductsCallback("galaxy", (results) => {
+  console.log("Callback Results:", results);
+});
+
+
+// ------------------------
+// TEST PROMISE
+// ------------------------
+searchProductsPromise("laptop")
+  .then((results) => {
+    console.log("Promise Results:", results);
+  });
+
+</script>
+
+</body>
+</html>

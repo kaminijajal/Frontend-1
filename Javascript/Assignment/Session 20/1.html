@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Flipkart Style Cart Test</title>
+  <style>
+    body {
+      font-family: Arial;
+      display: flex;
+      gap: 40px;
+      padding: 20px;
+    }
+
+    .product, .cart {
+      border: 1px solid #ccc;
+      padding: 15px;
+      width: 300px;
+    }
+
+    button {
+      padding: 6px 10px;
+      margin-top: 5px;
+      cursor: pointer;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PRODUCTS -->
+  <div class="product">
+    <h2>Products</h2>
+
+    <div>
+      <p>Shoes - ₹500</p>
+      <button onclick="addToCart(1, 'Shoes', 500)">Add to Cart</button>
+    </div>
+
+    <div>
+      <p>Watch - ₹1000</p>
+      <button onclick="addToCart(2, 'Watch', 1000)">Add to Cart</button>
+    </div>
+
+    <div>
+      <p>Bag - ₹800</p>
+      <button onclick="addToCart(3, 'Bag', 800)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- CART -->
+  <div class="cart">
+    <h2>Cart</h2>
+    <div id="cartItems"></div>
+  </div>
+
+<script>
+  let cart = [];
+
+  function addToCart(id, name, price) {
+    const existing = cart.find(item => item.id === id);
+
+    if (existing) {
+      // Flipkart-style: increase quantity
+      existing.qty += 1;
+    } else {
+      cart.push({ id, name, price, qty: 1 });
+    }
+
+    renderCart();
+  }
+
+  function renderCart() {
+    const container = document.getElementById("cartItems");
+    container.innerHTML = "";
+
+    cart.forEach(item => {
+      container.innerHTML += `
+        <div class="item">
+          <span>${item.name} (x${item.qty})</span>
+          <span>₹${item.price * item.qty}</span>
+        </div>
+      `;
+    });
+  }
+</script>
+
+</body>
+</html>

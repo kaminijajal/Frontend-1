@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Instagram URL Validation</title>
+<style>
+    .error {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+</style>
+</head>
+<body>
+
+<form id="profileForm">
+    <label for="instagram">Instagram Profile URL:</label><br>
+    <input
+        type="text"
+        id="instagram"
+        placeholder="https://www.instagram.com/username/"
+    >
+    <div id="errorMessage" class="error"></div>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+const form = document.getElementById("profileForm");
+const input = document.getElementById("instagram");
+const errorMessage = document.getElementById("errorMessage");
+
+form.addEventListener("submit", function (e) {
+    const pattern = /^https:\/\/(www\.)?instagram\.com\/[A-Za-z0-9._]+\/?$/;
+
+    if (!pattern.test(input.value.trim())) {
+        e.preventDefault();
+        errorMessage.textContent = "Please enter a valid Instagram profile URL.";
+    } else {
+        errorMessage.textContent = "";
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist Link Manager</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f5f7fb;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        h2, h3 {
+            margin-top: 0;
+            color: #111;
+        }
+
+        h3 {
+            margin-top: 30px;
+            font-size: 16px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #0066cc;
+        }
+
+        button {
+            width: 100%;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: #0052a3;
+        }
+
+        .storage-display {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 13px;
+            white-space: pre-wrap;
+            word-break: break-all;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Add Playlist Link</h2>
+
+    <form id="playlistForm" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+            <label for="platform">Platform</label>
+            <input type="text" id="platform" placeholder="e.g., Spotify, YouTube Music" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="title">Playlist Title</label>
+            <input type="text" id="title" placeholder="e.g., Chill Lofi Beats" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="url">URL</label>
+            <input type="url" id="url" placeholder="https://spotify.com/..." required>
+        </div>
+        
+        <button type="submit">Add to My Links</button>
+    </form>
+
+    <h3>LocalStorage Data ('myLinks')</h3>
+    <pre class="storage-display" id="storageDisplay">[]</pre>
+</div>
+
+<script>
+    // --- Core JavaScript Function ---
+    function addPlaylistLink(linkObj) {
+        let savedLinks = localStorage.getItem('myLinks');
+        let linksArray = savedLinks ? JSON.parse(savedLinks) : [];
+
+        if (!Array.isArray(linksArray)) {
+            linksArray = [];
+        }
+
+        linksArray.push(linkObj);
+        localStorage.setItem('myLinks', JSON.stringify(linksArray));
+    }
+
+    // --- Form Management UI Helpers ---
+    function updateDisplay() {
+        const currentData = localStorage.getItem('myLinks');
+        const displayDiv = document.getElementById('storageDisplay');
+        
+        if (currentData) {
+            displayDiv.textContent = JSON.stringify(JSON.parse(currentData), null, 2);
+        } else {
+            displayDiv.textContent = "[No links stored inside 'myLinks' yet]";
+        }
+    }
+
+    function handleFormSubmit(event) {
+        event.preventDefault();
+
+        const payload = {
+            platform: document.getElementById('platform').value,
+            title: document.getElementById('title').value,
+            url: document.getElementById('url').value
+        };
+
+        addPlaylistLink(payload);
+        updateDisplay();
+        document.getElementById('playlistForm').reset();
+    }
+
+    window.onload = updateDisplay;
+</script>
+
+</body>
+</html>

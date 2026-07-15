@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug localStorage</title>
+</head>
+<body>
+
+<script>
+    // Array of movies
+    let movies = ["Jawan", "Pathaan", "Dunki"];
+
+    // Convert array to JSON string before saving
+    localStorage.setItem("movies", JSON.stringify(movies));
+
+    // Read data from localStorage
+    let saved = localStorage.getItem("movies");
+
+    // Convert JSON string back to array
+    let arr = JSON.parse(saved);
+
+    console.log(arr);
+</script>
+
+</body>
+</html>

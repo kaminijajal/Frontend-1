@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flipkart Filter Example</title>
+</head>
+<body>
+
+  <h2>Check Console for In-Stock Products</h2>
+
+  <script>
+    // Array of Flipkart products
+    const products = [
+      { name: "Shoes", price: 999, isInStock: true },
+      { name: "Watch", price: 1999, isInStock: false },
+      { name: "Bag", price: 799, isInStock: true },
+      { name: "Headphones", price: 1499, isInStock: false }
+    ];
+
+    // Filter only in-stock products
+    const inStockProducts = products.filter(product => product.isInStock);
+
+    // Display result
+    console.log("In-Stock Products:", inStockProducts);
+  </script>
+
+</body>
+</html>

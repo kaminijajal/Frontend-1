@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Class Example</title>
+</head>
+<body>
+
+  <h2>Check Console for Movie Output</h2>
+
+  <script>
+    // Refactored using class
+    class Movie {
+      constructor(title, genre) {
+        this.title = title;
+        this.genre = genre;
+      }
+
+      display() {
+        console.log(`${this.title} - ${this.genre}`);
+      }
+    }
+
+    // Create object
+    const movie1 = new Movie("Inception", "Sci-Fi");
+
+    // Call method
+    movie1.display();
+  </script>
+
+</body>
+</html>

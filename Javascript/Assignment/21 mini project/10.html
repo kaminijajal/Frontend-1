@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Playlist Links</title>
+</head>
+<body>
+
+<input type="text" id="title" placeholder="Playlist Title">
+<input type="text" id="url" placeholder="Playlist URL">
+<button onclick="addLink()">Add</button>
+
+<ul id="playlistList"></ul>
+
+<script>
+    let myPlaylists = JSON.parse(localStorage.getItem("myPlaylists")) || [];
+    let editIndex = -1;
+
+    // Save to LocalStorage (reused by add/edit/delete)
+    function savePlaylists() {
+        localStorage.setItem("myPlaylists", JSON.stringify(myPlaylists));
+        renderPlaylists();
+    }
+
+    // Reusable function for both add and edit
+    function manageLink(linkObj, mode) {
+        if (mode === "add") {
+            myPlaylists.push(linkObj);
+        } else if (mode === "edit" && editIndex !== -1) {
+            myPlaylists[editIndex] = linkObj;
+            editIndex = -1;
+        }
+
+        savePlaylists();
+
+        // Clear form
+        document.getElementById("title").value = "";
+        document.getElementById("url").value = "";
+    }
+
+    function addLink() {
+        const linkObj = {
+            title: document.getElementById("title").value,
+            url: document.getElementById("url").value
+        };
+
+        manageLink(linkObj, "add");
+    }
+
+    function editLink(index) {
+        editIndex = index;
+
+        document.getElementById("title").value = myPlaylists[index].title;
+        document.getElementById("url").value = myPlaylists[index].url;
+    }
+
+    function updateLink() {
+        const linkObj = {
+            title: document.getElementById("title").value,
+            url: document.getElementById("url").value
+        };
+
+        manageLink(linkObj, "edit");
+    }
+
+    function deleteLink(index) {
+        myPlaylists.splice(index, 1);
+        savePlaylists();
+    }
+
+    function renderPlaylists() {
+        const list = document.getElementById("playlistList");
+        list.innerHTML = "";
+
+        myPlaylists.forEach((playlist, index) => {
+            list.innerHTML += `
+                <li>
+                    <strong>${playlist.title}</strong> -
+                    <a href="${playlist.url}" target="_blank">${playlist.url}</a>
+                    <button onclick="editLink(${index})">Edit</button>
+                    <button onclick="deleteLink(${index})">Delete</button>
+                </li>
+            `;
+        });
+    }
+
+    renderPlaylists();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flipkart Product Discount</title>
+</head>
+<body>
+
+  <h2>Check Console for Discounted Price</h2>
+
+  <script>
+    // Define FlipkartProduct class
+    class FlipkartProduct {
+      constructor(title, price, rating) {
+        this.title = title;
+        this.price = price;
+        this.rating = rating;
+      }
+
+      // Method to calculate discounted price
+      getDiscountedPrice(discountPercent) {
+        return this.price - (this.price * discountPercent / 100);
+      }
+    }
+
+    // Create product instance
+    const product1 = new FlipkartProduct("Wireless Headphones", 2000, 4.5);
+
+    // Calculate discounted price
+    const discountedPrice = product1.getDiscountedPrice(20);
+
+    // Output results
+    console.log("Product:", product1.title);
+    console.log("Original Price:", product1.price);
+    console.log("Discounted Price:", discountedPrice);
+  </script>
+
+</body>
+</html>

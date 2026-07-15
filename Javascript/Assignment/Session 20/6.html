@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Playlist Form</title>
+  <style>
+    body {
+      font-family: Arial;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #121212;
+      color: white;
+    }
+
+    .box {
+      width: 320px;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #1db954;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 20px;
+      margin-top: 10px;
+    }
+
+    .error {
+      color: #ff4d4d;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Create Playlist</h2>
+
+  <label>Playlist Name</label>
+  <input type="text" id="name" />
+  <div id="nameError" class="error"></div>
+
+  <label>Description</label>
+  <textarea id="desc"></textarea>
+  <div id="descError" class="error"></div>
+
+  <button onclick="validateForm()">Create</button>
+</div>
+
+<script>
+  function validateForm() {
+    const name = document.getElementById("name").value.trim();
+    const desc = document.getElementById("desc").value.trim();
+
+    const nameError = document.getElementById("nameError");
+    const descError = document.getElementById("descError");
+
+    let isValid = true;
+
+    // Playlist name validation
+    if (name === "") {
+      nameError.textContent = "Playlist name is required";
+      isValid = false;
+    } else {
+      nameError.textContent = "";
+    }
+
+    // Description validation
+    if (desc === "") {
+      descError.textContent = "Description is required";
+      isValid = false;
+    } else {
+      descError.textContent = "";
+    }
+
+    if (isValid) {
+      alert("Playlist created successfully!");
+    }
+  }
+</script>
+
+</body>
+</html>

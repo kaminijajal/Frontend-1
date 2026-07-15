@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Song Lyrics Fetcher</title>
+</head>
+<body>
+
+  <h2>Check Console for Lyrics</h2>
+
+  <script>
+    function fetchSongLyrics(song, callback) {
+      console.log(`Fetching lyrics for "${song}"...`);
+
+      setTimeout(() => {
+        const lyrics = `🎵 Lyrics of "${song}": La la la... this is a demo lyric for ${song}.`;
+        callback(lyrics);
+      }, 1000);
+    }
+
+    // Callback function to display lyrics
+    function displayLyrics(text) {
+      console.log(text);
+    }
+
+    // Test the function
+    fetchSongLyrics("Shape of You", displayLyrics);
+  </script>
+
+</body>
+</html>

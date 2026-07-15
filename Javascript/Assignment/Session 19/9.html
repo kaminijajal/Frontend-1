@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurant Manager</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .app {
+      width: 450px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #e23744;
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    button {
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .add-btn {
+      width: 100%;
+      background: #e23744;
+      color: white;
+    }
+
+    .add-btn:hover {
+      background: #c91f33;
+    }
+
+    .card {
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      background: #fafafa;
+    }
+
+    .name {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .rating {
+      color: green;
+      font-weight: bold;
+    }
+
+    .btn-group {
+      margin-top: 8px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .edit-btn {
+      flex: 1;
+      background: orange;
+    }
+
+    .delete-btn {
+      flex: 1;
+      background: red;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="app">
+  <h2>Restaurant Manager 🍽️</h2>
+
+  <input type="text" id="name" placeholder="Restaurant Name">
+  <input type="text" id="cuisine" placeholder="Cuisine (e.g. Indian, Italian)">
+  <input type="number" id="rating" placeholder="Rating (1-5)" min="1" max="5">
+
+  <button class="add-btn" onclick="addOrUpdate()">Add Restaurant</button>
+
+  <h3>Restaurant List</h3>
+  <div id="list"></div>
+</div>
+
+<script>
+  let restaurants = [];
+  let editIndex = -1;
+
+  function addOrUpdate() {
+    const name = document.getElementById("name").value.trim();
+    const cuisine = document.getElementById("cuisine").value.trim();
+    const rating = document.getElementById("rating").value.trim();
+
+    if (!name || !cuisine || !rating) {
+      alert("Please fill all fields!");
+      return;
+    }
+
+    const restaurant = {
+      name,
+      cuisine,
+      rating: Number(rating)
+    };
+
+    if (editIndex === -1) {
+      restaurants.push(restaurant);
+    } else {
+      restaurants[editIndex] = restaurant;
+      editIndex = -1;
+    }
+
+    clearForm();
+    renderRestaurants();
+  }
+
+  function renderRestaurants() {
+    const list = document.getElementById("list");
+    list.innerHTML = "";
+
+    restaurants.forEach((r, index) => {
+      list.innerHTML += `
+        <div class="card">
+          <div class="name">${index + 1}. ${r.name}</div>
+          <div>Cuisine: ${r.cuisine}</div>
+          <div class="rating">⭐ ${r.rating}/5</div>
+
+          <div class="btn-group">
+            <button class="edit-btn" onclick="editRestaurant(${index})">Edit</button>
+            <button class="delete-btn" onclick="deleteRestaurant(${index})">Delete</button>
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  function deleteRestaurant(index) {
+    restaurants.splice(index, 1);
+    renderRestaurants();
+  }
+
+  function editRestaurant(index) {
+    const r = restaurants[index];
+
+    document.getElementById("name").value = r.name;
+    document.getElementById("cuisine").value = r.cuisine;
+    document.getElementById("rating").value = r.rating;
+
+    editIndex = index;
+  }
+
+  function clearForm() {
+    document.getElementById("name").value = "";
+    document.getElementById("cuisine").value = "";
+    document.getElementById("rating").value = "";
+  }
+</script>
+
+</body>
+</html>

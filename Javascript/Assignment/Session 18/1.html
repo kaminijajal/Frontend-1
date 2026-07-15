@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Instagram Upload Simulation</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+    .box {
+      max-width: 400px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    input, button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>📸 Instagram Upload Simulator</h2>
+
+    <input type="text" id="imageInput" placeholder="Enter image name (e.g. photo.jpg)">
+    <input type="text" id="captionInput" placeholder="Enter caption (optional)">
+
+    <button onclick="uploadPost()">Upload Post</button>
+  </div>
+
+  <script>
+    function uploadPost() {
+      const image = document.getElementById("imageInput").value;
+      const caption = document.getElementById("captionInput").value;
+
+      console.log("📤 Uploading post...");
+
+      // Error case: no image
+      if (!image) {
+        console.error("❌ Error: Image upload failed!");
+        return;
+      }
+
+      // Warning case: missing caption
+      if (!caption.trim()) {
+        console.warn("⚠️ Warning: Caption is missing. Engagement may be low.");
+      }
+
+      // Success case
+      console.log("✅ Post uploaded successfully!");
+      console.log("🖼️ Image:", image);
+      console.log("📝 Caption:", caption || "(no caption)");
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stack Trace Debugging</title>
+</head>
+<body>
+
+  <h2>🧾 Stack Trace Debug Example</h2>
+  <p>Open Console (F12) to see error stack trace</p>
+
+  <script>
+    function placeOrder() {
+      confirmOrder();
+    }
+
+    function confirmOrder() {
+      processPayment();
+    }
+
+    function processPayment() {
+      throw new Error("Payment failed");
+    }
+
+    // Start the chain
+    placeOrder();
+  </script>
+
+</body>
+</html>

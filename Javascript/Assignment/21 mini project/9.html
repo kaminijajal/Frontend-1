@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Delete Playlist Link</title>
+</head>
+<body>
+
+<ul id="playlistList"></ul>
+
+<script>
+    // Load playlists from LocalStorage or use an empty array
+    let myPlaylists = JSON.parse(localStorage.getItem("myPlaylists")) || [];
+
+    // Display playlists
+    function renderPlaylists() {
+        const list = document.getElementById("playlistList");
+        list.innerHTML = "";
+
+        myPlaylists.forEach((playlist, index) => {
+            list.innerHTML += `
+                <li>
+                    <a href="${playlist}" target="_blank">${playlist}</a>
+                    <button onclick="deletePlaylistLink(${index})">
+                        Delete
+                    </button>
+                </li>
+            `;
+        });
+    }
+
+    // Delete a playlist and update LocalStorage
+    function deletePlaylistLink(index) {
+        myPlaylists.splice(index, 1); // Remove the selected playlist
+        localStorage.setItem("myPlaylists", JSON.stringify(myPlaylists)); // Save updated array
+        renderPlaylists(); // Refresh the displayed list
+    }
+
+    // Initial render
+    renderPlaylists();
+</script>
+
+</body>
+</html>

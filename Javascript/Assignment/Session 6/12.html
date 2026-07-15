@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Now Playing</title>
+</head>
+<body>
+
+    <h2>Now Playing: <span id="song-title">Shape of You</span></h2>
+
+    <button onclick="changeSong()">Change Song</button>
+
+    <script>
+        let songs = [
+            "Perfect",
+            "Believer",
+            "Senorita",
+            "Blinding Lights",
+            "Levitating"
+        ];
+
+        let index = 0;
+
+        function changeSong() {
+            document.getElementById("song-title").innerHTML = songs[index];
+            index++;
+
+            if (index >= songs.length) {
+                index = 0;
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Playlist Example</title>
+</head>
+<body>
+
+<h2>Check Console for Playlist Response 🎵</h2>
+
+<script>
+  function addNewPlaylist() {
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: "My Chill Vibes Playlist",
+        description: "A collection of relaxing and lo-fi tracks for studying and focus."
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log("🎵 Playlist Created Response:");
+      console.log(data);
+    })
+    .catch(error => {
+      console.log("Error creating playlist:", error);
+    });
+  }
+
+  // Call the function
+  addNewPlaylist();
+</script>
+
+</body>
+</html>

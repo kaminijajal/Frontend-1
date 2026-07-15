@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Public Playlists</title>
+</head>
+<body>
+
+  <h2>All Playlists</h2>
+  <ul id="allPlaylists"></ul>
+
+  <h2>Public Playlists</h2>
+  <ul id="publicPlaylists"></ul>
+
+  <script>
+    const playlists = [
+      { name: "Workout Mix", isPublic: true },
+      { name: "Private Chill", isPublic: false },
+      { name: "Top Hits", isPublic: true },
+      { name: "My Secrets", isPublic: false }
+    ];
+
+    // Show all playlists
+    const allList = document.getElementById("allPlaylists");
+    playlists.forEach(p => {
+      const li = document.createElement("li");
+      li.textContent = p.name + (p.isPublic ? " (Public)" : " (Private)");
+      allList.appendChild(li);
+    });
+
+    // Filter only public playlists
+    const publicPlaylists = playlists.filter(p => p.isPublic);
+
+    // Show public playlists
+    const publicList = document.getElementById("publicPlaylists");
+    publicPlaylists.forEach(p => {
+      const li = document.createElement("li");
+      li.textContent = p.name;
+      publicList.appendChild(li);
+    });
+  </script>
+
+</body>
+</html>

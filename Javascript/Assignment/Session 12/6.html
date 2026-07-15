@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>POST Request Example</title>
+</head>
+<body>
+
+<h2>Check Console for POST Response 🚀</h2>
+
+<script>
+  function createPost() {
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: "My First Movie Review",
+        body: "This movie was amazing! Totally worth watching on the big screen."
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Full Response Object:", data);
+
+      // Check if id exists
+      if (data.id) {
+        console.log("✅ ID is present:", data.id);
+      } else {
+        console.log("❌ ID not found in response");
+      }
+    })
+    .catch(error => {
+      console.log("Error:", error);
+    });
+  }
+
+  // Call function automatically
+  createPost();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stack Trace Example</title>
+</head>
+<body>
+
+  <h2>Open Console (F12) to see Error Stack Trace</h2>
+
+  <script>
+    function parseData() {
+      // This will throw an error
+      JSON.parse("{invalid json}");
+    }
+
+    function loadApp() {
+      parseData();
+    }
+
+    function start() {
+      loadApp();
+    }
+
+    try {
+      start();
+    } catch (error) {
+      console.error("Error Message:", error.message);
+      console.error("Full Stack Trace:", error.stack);
+    }
+  </script>
+
+</body>
+</html>

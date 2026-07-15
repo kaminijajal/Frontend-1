@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>YouTube Notification Feed</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .add-btn {
+      padding: 10px 14px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+
+    .feed {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 500px;
+    }
+
+    .card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #fafafa;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .card.fade-out {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+
+    .title {
+      font-weight: bold;
+    }
+
+    .dismiss {
+      background: red;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .dismiss:hover {
+      background: darkred;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>YouTube Notifications</h2>
+
+  <button class="add-btn" id="addNotification">Add Notification</button>
+
+  <div class="feed" id="feed">
+
+    <div class="card">
+      <div class="title">New video: JavaScript Tips</div>
+      <button class="dismiss">Dismiss</button>
+    </div>
+
+    <div class="card">
+      <div class="title">Channel upload: CSS Tricks</div>
+      <button class="dismiss">Dismiss</button>
+    </div>
+
+    <div class="card">
+      <div class="title">Live stream started</div>
+      <button class="dismiss">Dismiss</button>
+    </div>
+
+  </div>
+
+  <script>
+    const feed = document.getElementById("feed");
+    const addBtn = document.getElementById("addNotification");
+
+    const messages = [
+      "New video: React Basics",
+      "Your subscription uploaded a video",
+      "Trending: AI News Update",
+      "Live stream starting soon",
+      "Recommended: HTML Crash Course"
+    ];
+
+    // Add dynamic notification
+    addBtn.addEventListener("click", () => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      const text = messages[Math.floor(Math.random() * messages.length)];
+
+      card.innerHTML = `
+        <div class="title">${text}</div>
+        <button class="dismiss">Dismiss</button>
+      `;
+
+      feed.appendChild(card);
+    });
+
+    // Event Delegation (single listener)
+    feed.addEventListener("click", (event) => {
+      if (event.target.classList.contains("dismiss")) {
+        const card = event.target.closest(".card");
+
+        // fade out animation
+        card.classList.add("fade-out");
+
+        // remove after animation completes
+        setTimeout(() => {
+          card.remove();
+        }, 400);
+      }
+    });
+  </script>
+
+</body>
+</html>

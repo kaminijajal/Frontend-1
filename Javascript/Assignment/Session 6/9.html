@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode</title>
+</head>
+<body id="page">
+
+    <button id="modeBtn" onclick="changeMode()">Dark Mode</button>
+
+    <script>
+        function changeMode() {
+            let page = document.getElementById("page");
+            let button = document.getElementById("modeBtn");
+
+            page.style.backgroundColor = "black";
+            page.style.color = "white";
+
+            button.innerHTML = "Light Mode";
+        }
+    </script>
+
+</body>
+</html>

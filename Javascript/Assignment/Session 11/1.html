@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout Example</title>
+</head>
+<body>
+
+    <h2 id="status">Please wait...</h2>
+
+    <script>
+        // Show loading message after 2 seconds
+        setTimeout(() => {
+            document.getElementById("status").textContent = "Loading your feed...";
+
+            // Replace with loaded message after another 2 seconds
+            setTimeout(() => {
+                document.getElementById("status").textContent = "Feed loaded!";
+            }, 2000);
+
+        }, 2000);
+    </script>
+
+</body>
+</html>

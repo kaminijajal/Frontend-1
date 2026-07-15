@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Total Clicks</title>
+</head>
+<body>
+
+  <h2>Check Console for Total Clicks</h2>
+
+  <script>
+    const orders = [
+      { id: 1, clicks: 10 },
+      { id: 2, clicks: 25 },
+      { id: 3, clicks: 5 },
+      { id: 4, clicks: 40 }
+    ];
+
+    const totalClicks = orders.reduce((accumulator, order) => {
+      return accumulator + order.clicks;
+    }, 0);
+
+    console.log("Total Clicks:", totalClicks);
+  </script>
+
+</body>
+</html>

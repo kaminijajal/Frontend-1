@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Zomato App Scaling Explanation</title>
+</head>
+<body>
+
+  <h2>Open Console to see explanation 📦</h2>
+
+  <script>
+    function explainScaling() {
+      const explanation =
+        "Splitting utility functions into separate files using imports and exports helps a Zomato-like app grow easily. " +
+        "As features increase (like orders, payments, ratings, delivery tracking), each feature stays in its own module, " +
+        "so the code does not become messy or hard to manage. This improves reusability, debugging, and teamwork because " +
+        "different developers can work on different files without conflicts.\n\n" +
+        "Example: A function like calculateDeliveryTime() can be kept in deliveryUtils.js and reused in order tracking " +
+        "and live order status pages without rewriting it.";
+
+      console.log(explanation);
+    }
+
+    explainScaling();
+  </script>
+
+</body>
+</html>

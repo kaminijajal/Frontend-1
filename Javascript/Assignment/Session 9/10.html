@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clear Favorites</title>
+</head>
+<body>
+
+    <h2>Favorite Restaurants</h2>
+
+    <button onclick="showFavorites()">Show Favorites</button>
+    <button onclick="clearFavorites()">Clear Favorites</button>
+
+    <ul id="favoriteList"></ul>
+
+    <script>
+        // Sample data (for testing)
+        localStorage.setItem(
+            "favoriteRestaurants",
+            JSON.stringify(["Pizza Hut", "McDonald's", "Domino's"])
+        );
+
+        function showFavorites() {
+            const list = document.getElementById("favoriteList");
+            list.innerHTML = "";
+
+            const favorites = JSON.parse(
+                localStorage.getItem("favoriteRestaurants")
+            ) || [];
+
+            if (favorites.length === 0) {
+                list.innerHTML = "<li>No favorite restaurants found.</li>";
+                return;
+            }
+
+            favorites.forEach(function (restaurant) {
+                const li = document.createElement("li");
+                li.textContent = restaurant;
+                list.appendChild(li);
+            });
+        }
+
+        function clearFavorites() {
+            // Remove data from localStorage
+            localStorage.removeItem("favoriteRestaurants");
+
+            // Update the UI
+            showFavorites();
+        }
+
+        // Display favorites on page load
+        showFavorites();
+    </script>
+
+</body>
+</html>

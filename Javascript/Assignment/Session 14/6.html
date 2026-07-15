@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cart Discount Demo</title>
+</head>
+<body>
+
+  <h2>Check Console for Cart Details 🛒</h2>
+
+  <script>
+    // Format price
+    function formatPrice(price) {
+      return "₹" + price.toFixed(2);
+    }
+
+    // Calculate discounted price
+    function getDiscountedPrice(price, discountPercent) {
+      return price - (price * discountPercent) / 100;
+    }
+
+    // Cart items
+    const items = [
+      { name: "Shoes", price: 2000, discount: 10 },
+      { name: "T-Shirt", price: 800, discount: 20 },
+      { name: "Watch", price: 5000, discount: 15 }
+    ];
+
+    // Display output
+    items.forEach(item => {
+      const discountedPrice = getDiscountedPrice(item.price, item.discount);
+
+      console.log("🛒 Item:", item.name);
+      console.log("Original Price:", formatPrice(item.price));
+      console.log("Discounted Price:", formatPrice(discountedPrice));
+      console.log("----------------------");
+    });
+  </script>
+
+</body>
+</html>

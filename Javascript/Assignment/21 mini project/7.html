@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theme Toggle</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: white;
+        color: black;
+        transition: 0.3s;
+    }
+
+    .dark-mode {
+        background: #222;
+        color: white;
+    }
+
+    button {
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<h1>Theme Toggle Example</h1>
+<p>Click the button to switch between Light and Dark mode.</p>
+
+<button onclick="toggleTheme()">Toggle Theme</button>
+
+<script>
+    // Apply saved theme when page loads
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+    }
+
+    function toggleTheme() {
+        // Toggle the dark-mode class
+        document.body.classList.toggle("dark-mode");
+
+        // Save current theme in LocalStorage
+        if (document.body.classList.contains("dark-mode")) {
+            localStorage.setItem("theme", "dark");
+        } else {
+            localStorage.setItem("theme", "light");
+        }
+    }
+</script>
+
+</body>
+</html>

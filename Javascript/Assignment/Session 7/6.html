@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zomato Food Order Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+
+    .container {
+      background: white;
+      padding: 20px;
+      width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: #e23744;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+
+    select,
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+
+    #message {
+      margin-top: 15px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Food Order</h2>
+
+    <label for="cuisine">Select Cuisine:</label>
+    <select id="cuisine" onchange="showCuisine()">
+      <option value="">--Choose Cuisine--</option>
+      <option>Indian</option>
+      <option>Chinese</option>
+      <option>Italian</option>
+      <option>Mexican</option>
+      <option>Thai</option>
+    </select>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" min="1" placeholder="Enter quantity">
+
+    <p id="message"></p>
+  </div>
+
+  <script>
+    function showCuisine() {
+      const cuisine = document.getElementById("cuisine").value;
+      const message = document.getElementById("message");
+
+      if (cuisine === "") {
+        message.innerHTML = "";
+      } else {
+        message.innerHTML = "You selected: " + cuisine + " cuisine.";
+      }
+    }
+  </script>
+
+</body>
+</html>

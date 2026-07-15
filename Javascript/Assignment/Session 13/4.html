@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSON Parse Try Catch Finally</title>
+</head>
+<body>
+
+  <h2>Check Console Output</h2>
+
+  <script>
+    const productJSON = '{"name":"Shoes","price":999}'; // valid JSON
+    // const productJSON = '{"name":"Shoes","price":999'; // invalid JSON (test error)
+
+    try {
+      const product = JSON.parse(productJSON);
+      console.log("Parsed Product:", product);
+    } catch (error) {
+      console.log("Invalid product data");
+    } finally {
+      console.log("Parsing attempt finished");
+    }
+  </script>
+
+</body>
+</html>

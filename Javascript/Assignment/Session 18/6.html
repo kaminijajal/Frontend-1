@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add to Cart Console Demo</title>
+</head>
+<body>
+
+  <h2>🛒 Add to Cart Console Demo</h2>
+  <p>Open Developer Console (F12) to see messages</p>
+
+  <script>
+    function addToCart(productName, quantity) {
+      if (quantity < 0) {
+        console.error(`❌ Error: Cannot add "${productName}" with negative quantity (${quantity}).`);
+        return;
+      }
+
+      if (quantity === 0) {
+        console.warn(`⚠️ Warning: "${productName}" has quantity 0. Nothing will be added to cart.`);
+        return;
+      }
+
+      console.log(`✅ Success: Added "${productName}" (Quantity: ${quantity}) to cart.`);
+    }
+
+    // ✅ Success case
+    addToCart("Shoes", 2);
+
+    // ⚠️ Warning case
+    addToCart("T-shirt", 0);
+
+    // ❌ Error case
+    addToCart("Watch", -1);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Playlist Manager</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #121212;
+      color: white;
+      display: flex;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .app {
+      width: 420px;
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 6px;
+    }
+
+    button {
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .add-btn {
+      width: 100%;
+      background: #1db954;
+      color: white;
+    }
+
+    .add-btn:hover {
+      background: #17a74a;
+    }
+
+    .playlist {
+      margin-top: 10px;
+      padding: 10px;
+      background: #2a2a2a;
+      border-radius: 8px;
+    }
+
+    .title {
+      color: #1db954;
+      font-weight: bold;
+    }
+
+    .btn-group {
+      margin-top: 8px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .edit-btn {
+      background: #ffa500;
+      color: black;
+      flex: 1;
+    }
+
+    .delete-btn {
+      background: #ff4d4d;
+      color: white;
+      flex: 1;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="app">
+  <h2>Playlist Manager 🎧</h2>
+
+  <input type="text" id="name" placeholder="Playlist Name">
+  <textarea id="desc" placeholder="Playlist Description"></textarea>
+
+  <button class="add-btn" onclick="addOrUpdatePlaylist()">Add Playlist</button>
+
+  <h3>Your Playlists</h3>
+  <div id="list"></div>
+</div>
+
+<script>
+  let playlists = [];
+  let editIndex = -1; // tracks which playlist is being edited
+
+  function addOrUpdatePlaylist() {
+    const name = document.getElementById("name").value.trim();
+    const desc = document.getElementById("desc").value.trim();
+
+    if (!name) {
+      alert("Playlist name is required!");
+      return;
+    }
+
+    const playlist = { name, description: desc };
+
+    // If editing existing playlist
+    if (editIndex === -1) {
+      playlists.push(playlist);
+    } else {
+      playlists[editIndex] = playlist;
+      editIndex = -1;
+    }
+
+    // Reset form
+    document.getElementById("name").value = "";
+    document.getElementById("desc").value = "";
+
+    renderPlaylists();
+  }
+
+  function renderPlaylists() {
+    const list = document.getElementById("list");
+    list.innerHTML = "";
+
+    playlists.forEach((p, index) => {
+      list.innerHTML += `
+        <div class="playlist">
+          <div class="title">${index + 1}. ${p.name}</div>
+          <div>${p.description}</div>
+
+          <div class="btn-group">
+            <button class="edit-btn" onclick="editPlaylist(${index})">Edit</button>
+            <button class="delete-btn" onclick="deletePlaylist(${index})">Delete</button>
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  function deletePlaylist(index) {
+    playlists.splice(index, 1); // remove item
+    renderPlaylists();
+  }
+
+  function editPlaylist(index) {
+    const p = playlists[index];
+
+    document.getElementById("name").value = p.name;
+    document.getElementById("desc").value = p.description;
+
+    editIndex = index; // set edit mode
+  }
+</script>
+
+</body>
+</html>

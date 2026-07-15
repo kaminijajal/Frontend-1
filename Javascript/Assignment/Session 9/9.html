@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Get Recent Searches</title>
+</head>
+<body>
+
+    <h2>Recent Searches</h2>
+
+    <button onclick="showSearches()">Show Searches</button>
+
+    <p id="output"></p>
+
+    <script>
+        function getRecentSearches() {
+            const data = localStorage.getItem("recentSearches");
+
+            if (data === null) {
+                return [];
+            }
+
+            return JSON.parse(data);
+        }
+
+        function showSearches() {
+            const searches = getRecentSearches();
+
+            document.getElementById("output").innerHTML =
+                "Recent Searches: " + searches.join(", ");
+        }
+
+        // Sample data (for testing)
+        localStorage.setItem(
+            "recentSearches",
+            JSON.stringify(["Biryani", "Sneakers", "Laptop"])
+        );
+    </script>
+
+</body>
+</html>

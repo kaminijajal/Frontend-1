@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouse Click Coordinates</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    #clickArea {
+      width: 500px;
+      height: 300px;
+      margin: 20px auto;
+      border: 2px dashed #333;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    #output {
+      font-size: 18px;
+      font-weight: bold;
+      color: #0066cc;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Click Inside the Box</h2>
+
+  <div id="clickArea">
+    Click anywhere inside this box
+  </div>
+
+  <p id="output">X: 0, Y: 0</p>
+
+  <script>
+    const clickArea = document.getElementById("clickArea");
+    const output = document.getElementById("output");
+
+    clickArea.addEventListener("click", function (event) {
+      const x = event.clientX;
+      const y = event.clientY;
+
+      output.textContent = `X: ${x}, Y: ${y}`;
+    });
+  </script>
+
+</body>
+</html>

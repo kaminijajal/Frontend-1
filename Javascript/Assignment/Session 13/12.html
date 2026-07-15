@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Followers Format Example</title>
+</head>
+<body>
+
+  <h2>Check Console Output</h2>
+
+  <script>
+    function formatFollowers(count) {
+      try {
+        if (count < 0) throw new Error("Negative count");
+        return count + " followers";
+      } catch (e) {
+        return e.message;
+      }
+    }
+
+    // Test cases
+    console.log(formatFollowers(150));  // Valid case
+    console.log(formatFollowers(-10));   // Error case
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Total Transactions</title>
+</head>
+<body>
+
+  <h2>Check Console for Total Amount Spent</h2>
+
+  <script>
+    const transactions = [
+      { id: 1, amount: 1500 },
+      { id: 2, amount: 2999 },
+      { id: 3, amount: 750 },
+      { id: 4, amount: 1200 }
+    ];
+
+    // One-liner using map + reduce
+    const totalSpent = transactions
+      .map(t => t.amount)
+      .reduce((sum, amount) => sum + amount, 0);
+
+    console.log("Total Amount Spent:", totalSpent);
+  </script>
+
+</body>
+</html>

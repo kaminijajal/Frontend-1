@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Find Viral Video</title>
+</head>
+<body>
+
+  <h2>Check Console for Result</h2>
+
+  <script>
+    const videos = [
+      { title: "Intro to JS", views: 500000 },
+      { title: "CSS Tricks", views: 1200000 },
+      { title: "React Basics", views: 900000 },
+      { title: "Advanced JS", views: 2000000 }
+    ];
+
+    const viralVideo = videos.find(video => video.views > 1000000);
+
+    console.log("First viral video:", viralVideo);
+  </script>
+
+</body>
+</html>

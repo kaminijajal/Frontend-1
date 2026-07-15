@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrow Function with Rest Parameters</title>
+</head>
+<body>
+  <h2>Shopping Cart Total</h2>
+  <button onclick="showTotal()">Calculate Total</button>
+
+  <script>
+    // Arrow function with rest parameters
+    const addToCartArrow = (...prices) => {
+      let total = 0;
+
+      for (let price of prices) {
+        total += price;
+      }
+
+      return total;
+    };
+
+    function showTotal() {
+      const total = addToCartArrow(499, 299, 199, 999);
+
+      console.log("Total:", total);
+      alert("Total Cart Price: ₹" + total);
+    }
+  </script>
+</body>
+</html>

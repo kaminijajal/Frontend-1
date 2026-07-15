@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Playlist Example</title>
+</head>
+<body>
+
+  <h2>Check Console for Playlist Output</h2>
+
+  <script>
+    // Define Playlist class
+    class Playlist {
+      constructor(name, songs) {
+        this.name = name;
+        this.songs = songs;
+      }
+
+      // Method to display playlist
+      displayPlaylist() {
+        console.log(`🎵 Playlist: ${this.name}`);
+        console.log("Songs:");
+
+        this.songs.forEach((song, index) => {
+          console.log(`${index + 1}. ${song}`);
+        });
+      }
+    }
+
+    // Create instance
+    const chillVibes = new Playlist("Chill Vibes", [
+      "Blinding Lights - The Weeknd",
+      "Stay - Justin Bieber",
+      "Levitating - Dua Lipa"
+    ]);
+
+    // Call method
+    chillVibes.displayPlaylist();
+  </script>
+
+</body>
+</html>
